@@ -8,22 +8,27 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    @IBOutlet weak var txtEmailAddress: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    
+    var firebaseService=FirebaseService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addKeyboardHider()
 
-        // Do any additional setup after loading the view.
+    }
+    @IBAction func loginUser(_ sender: Any) {
+        self.firebaseService.loginUser(emailAddress:txtEmailAddress.text!, password: txtPassword.text!)
+    }
+
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func addKeyboardHider(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
-    */
-
 }

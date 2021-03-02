@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,9 @@
 		2E43FCDC25EE4F8B00FB5AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FCDA25EE4F8B00FB5AAD /* LaunchScreen.storyboard */; };
 		2E43FCEE25EE64D500FB5AAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCED25EE64D500FB5AAD /* LoginViewController.swift */; };
 		2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */; };
+		2E43FD0625EE68F300FB5AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */; };
+		2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */; };
+		FC5459469E642EE1BCD5A828 /* Pods_NIBM_CAFETERIA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B85741B714E8038E98EC82 /* Pods_NIBM_CAFETERIA.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,11 @@
 		2E43FCDD25EE4F8B00FB5AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E43FCED25EE64D500FB5AAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		ADF570708BF4142FB739E1AB /* Pods-NIBM-CAFETERIA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIBM-CAFETERIA.debug.xcconfig"; path = "Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA.debug.xcconfig"; sourceTree = "<group>"; };
+		B3B85741B714E8038E98EC82 /* Pods_NIBM_CAFETERIA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIBM_CAFETERIA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBDE5D0EF6645E994DF90A2A /* Pods-NIBM-CAFETERIA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIBM-CAFETERIA.release.xcconfig"; path = "Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5459469E642EE1BCD5A828 /* Pods_NIBM_CAFETERIA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +53,11 @@
 		2E43FCC325EE4F8A00FB5AAD = {
 			isa = PBXGroup;
 			children = (
+				2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */,
 				2E43FCCE25EE4F8A00FB5AAD /* NIBM-CAFETERIA */,
 				2E43FCCD25EE4F8A00FB5AAD /* Products */,
+				ECC816DBE7F621FA4EF157BA /* Pods */,
+				6872F44E9BA4F1C87D3D3A96 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +72,7 @@
 		2E43FCCE25EE4F8A00FB5AAD /* NIBM-CAFETERIA */ = {
 			isa = PBXGroup;
 			children = (
+				2E43FCF425EE682200FB5AAD /* Services */,
 				2E43FCEC25EE64B200FB5AAD /* ViewControllers */,
 				2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */,
 				2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */,
@@ -81,6 +94,31 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		2E43FCF425EE682200FB5AAD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6872F44E9BA4F1C87D3D3A96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3B85741B714E8038E98EC82 /* Pods_NIBM_CAFETERIA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECC816DBE7F621FA4EF157BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ADF570708BF4142FB739E1AB /* Pods-NIBM-CAFETERIA.debug.xcconfig */,
+				BBDE5D0EF6645E994DF90A2A /* Pods-NIBM-CAFETERIA.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E43FCE025EE4F8B00FB5AAD /* Build configuration list for PBXNativeTarget "NIBM-CAFETERIA" */;
 			buildPhases = (
+				AA65CFFD573A53EA14DB75BE /* [CP] Check Pods Manifest.lock */,
 				2E43FCC825EE4F8A00FB5AAD /* Sources */,
 				2E43FCC925EE4F8A00FB5AAD /* Frameworks */,
 				2E43FCCA25EE4F8A00FB5AAD /* Resources */,
+				50928B52413715E25F9F78B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,12 +179,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E43FCDC25EE4F8B00FB5AAD /* LaunchScreen.storyboard in Resources */,
+				2E43FD0625EE68F300FB5AAD /* GoogleService-Info.plist in Resources */,
 				2E43FCD925EE4F8B00FB5AAD /* Assets.xcassets in Resources */,
 				2E43FCD725EE4F8A00FB5AAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50928B52413715E25F9F78B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA65CFFD573A53EA14DB75BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NIBM-CAFETERIA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2E43FCC825EE4F8A00FB5AAD /* Sources */ = {
@@ -155,6 +238,7 @@
 				2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */,
 				2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */,
 				2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */,
+				2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */,
 				2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +383,7 @@
 		};
 		2E43FCE125EE4F8B00FB5AAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADF570708BF4142FB739E1AB /* Pods-NIBM-CAFETERIA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,6 +402,7 @@
 		};
 		2E43FCE225EE4F8B00FB5AAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBDE5D0EF6645E994DF90A2A /* Pods-NIBM-CAFETERIA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

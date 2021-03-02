@@ -1,0 +1,6 @@
+framework module Pods_NIBM_CAFETERIA {
+  umbrella header "Pods-NIBM-CAFETERIA-umbrella.h"
+
+  export *
+  module * { export * }
+}
