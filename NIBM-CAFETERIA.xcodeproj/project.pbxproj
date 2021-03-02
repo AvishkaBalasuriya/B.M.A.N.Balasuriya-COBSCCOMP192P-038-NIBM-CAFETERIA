@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */; };
 		2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */; };
-		2E43FCD425EE4F8A00FB5AAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD325EE4F8A00FB5AAD /* ViewController.swift */; };
+		2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD325EE4F8A00FB5AAD /* RegisterViewController.swift */; };
 		2E43FCD725EE4F8A00FB5AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FCD525EE4F8A00FB5AAD /* Main.storyboard */; };
 		2E43FCD925EE4F8B00FB5AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FCD825EE4F8B00FB5AAD /* Assets.xcassets */; };
 		2E43FCDC25EE4F8B00FB5AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FCDA25EE4F8B00FB5AAD /* LaunchScreen.storyboard */; };
+		2E43FCEE25EE64D500FB5AAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCED25EE64D500FB5AAD /* LoginViewController.swift */; };
+		2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E43FCCC25EE4F8A00FB5AAD /* NIBM-CAFETERIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM-CAFETERIA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2E43FCD325EE4F8A00FB5AAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E43FCD325EE4F8A00FB5AAD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2E43FCD625EE4F8A00FB5AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E43FCD825EE4F8B00FB5AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E43FCDB25EE4F8B00FB5AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E43FCDD25EE4F8B00FB5AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E43FCED25EE64D500FB5AAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,25 @@
 		2E43FCCE25EE4F8A00FB5AAD /* NIBM-CAFETERIA */ = {
 			isa = PBXGroup;
 			children = (
+				2E43FCEC25EE64B200FB5AAD /* ViewControllers */,
 				2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */,
 				2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */,
-				2E43FCD325EE4F8A00FB5AAD /* ViewController.swift */,
 				2E43FCD525EE4F8A00FB5AAD /* Main.storyboard */,
 				2E43FCD825EE4F8B00FB5AAD /* Assets.xcassets */,
 				2E43FCDA25EE4F8B00FB5AAD /* LaunchScreen.storyboard */,
 				2E43FCDD25EE4F8B00FB5AAD /* Info.plist */,
 			);
 			path = "NIBM-CAFETERIA";
+			sourceTree = "<group>";
+		};
+		2E43FCEC25EE64B200FB5AAD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2E43FCD325EE4F8A00FB5AAD /* RegisterViewController.swift */,
+				2E43FCED25EE64D500FB5AAD /* LoginViewController.swift */,
+				2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E43FCD425EE4F8A00FB5AAD /* ViewController.swift in Sources */,
+				2E43FCEE25EE64D500FB5AAD /* LoginViewController.swift in Sources */,
+				2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */,
+				2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */,
 				2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */,
 				2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */,
 			);
