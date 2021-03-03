@@ -17,6 +17,8 @@
 		2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */; };
 		2E43FD0625EE68F300FB5AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */; };
 		2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */; };
+		2EF2D51C25EFDEAC00633C6E /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2D51B25EFDEAC00633C6E /* ItemModel.swift */; };
+		2EF2D51F25EFE1B900633C6E /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2D51E25EFE1B900633C6E /* CartModel.swift */; };
 		FC5459469E642EE1BCD5A828 /* Pods_NIBM_CAFETERIA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B85741B714E8038E98EC82 /* Pods_NIBM_CAFETERIA.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		2E43FCF125EE650D00FB5AAD /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		2EF2D51B25EFDEAC00633C6E /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		2EF2D51E25EFE1B900633C6E /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		ADF570708BF4142FB739E1AB /* Pods-NIBM-CAFETERIA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIBM-CAFETERIA.debug.xcconfig"; path = "Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA.debug.xcconfig"; sourceTree = "<group>"; };
 		B3B85741B714E8038E98EC82 /* Pods_NIBM_CAFETERIA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NIBM_CAFETERIA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBDE5D0EF6645E994DF90A2A /* Pods-NIBM-CAFETERIA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NIBM-CAFETERIA.release.xcconfig"; path = "Target Support Files/Pods-NIBM-CAFETERIA/Pods-NIBM-CAFETERIA.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 		2E43FCCE25EE4F8A00FB5AAD /* NIBM-CAFETERIA */ = {
 			isa = PBXGroup;
 			children = (
+				2EF2D51A25EFDE8400633C6E /* Models */,
 				2E43FCF425EE682200FB5AAD /* Services */,
 				2E43FCEC25EE64B200FB5AAD /* ViewControllers */,
 				2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */,
@@ -100,6 +105,15 @@
 				2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2EF2D51A25EFDE8400633C6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EF2D51B25EFDEAC00633C6E /* ItemModel.swift */,
+				2EF2D51E25EFE1B900633C6E /* CartModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		6872F44E9BA4F1C87D3D3A96 /* Frameworks */ = {
@@ -239,6 +253,8 @@
 				2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */,
 				2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */,
 				2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */,
+				2EF2D51F25EFE1B900633C6E /* CartModel.swift in Sources */,
+				2EF2D51C25EFDEAC00633C6E /* ItemModel.swift in Sources */,
 				2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
