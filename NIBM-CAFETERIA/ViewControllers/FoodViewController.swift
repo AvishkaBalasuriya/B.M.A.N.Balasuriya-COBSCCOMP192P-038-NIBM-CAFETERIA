@@ -41,6 +41,8 @@ class FoodViewController: UIViewController {
     
     @objc func tap(_ sender: Any) {
         addNewItem(item: CartModel(foodId: foodDetails.foodId, foodName: foodDetails.foodName, foodQty: 1, totalPrice: foodDetails.foodPrice*1))
+        let storeViewController = storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
+        self.navigationController?.pushViewController(storeViewController!, animated: true)
     }
     
 }

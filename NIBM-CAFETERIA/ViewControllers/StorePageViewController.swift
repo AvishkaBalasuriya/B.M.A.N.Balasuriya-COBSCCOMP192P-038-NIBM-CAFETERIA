@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialButtons
 
 class StoreTableCustomCell: UITableViewCell {
     @IBOutlet weak var imgFoodImage: UIImageView!
@@ -27,24 +28,49 @@ class StorePageViewController: UIViewController {
     @IBOutlet weak var storeTableView: UITableView!
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var lblItemCount: UILabel!
+    @IBOutlet weak var foodCartView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationItem.leftBarButtonItem=nil
+        self.navigationItem.hidesBackButton=true
+        setFloatingButton()
         fetchFoodData()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
         storeTableView.delegate=self
         storeTableView.dataSource=self
         cartTableView.delegate=self
         cartTableView.dataSource=self
+        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         cartTableView.reloadData()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
+        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
+    }
+    
+    func setFloatingButton() {
+        let floatingButton = MDCFloatingButton()
+        floatingButton.mode = .expanded
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        floatingButton.setTitle("Order", for: .normal)
+        floatingButton.backgroundColor = .systemYellow
+        floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        view.addSubview(floatingButton)
+        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant:-100))
+        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX , relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
+    }
+    
+    @objc func tap(_ sender: Any) {
+        addNewOrder(order: OrderModel(orderId: OrderData.orderId, orderStatus: "Pending"))
+        removeCart()
+        let orderViewController = storyboard?.instantiateViewController(withIdentifier:"OrderView") as? OrderViewController
+        self.navigationController?.pushViewController(orderViewController!, animated: true)
     }
     
 }
-
 
 extension StorePageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

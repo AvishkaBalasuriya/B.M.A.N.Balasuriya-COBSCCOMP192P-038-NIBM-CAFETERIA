@@ -14,3 +14,7 @@ struct CartData {
 func addNewItem(item:CartModel){
     CartData.cartList.append(item)
 }
+
+func removeCart(){
+    CartData.cartList=[]
+}
