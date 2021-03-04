@@ -7,10 +7,26 @@
 
 import Foundation
 
+var firebaseFoodData=FirebaseService()
+
 struct FoodData {
-    static var foodList:[ItemModel] = []
+    static var foodList:[ItemModel] = [ItemModel(foodId: 1, foodName:"mew", foodDescription: "dededef dwdwd dwdw", foodPrice: 200.00, foodPhoto: "Food", foodDiscount: 10.0)]
+}
+
+func addNewFood(food:ItemModel){
+    if FoodData.foodList.count>0{
+        for food_data in FoodData.foodList{
+            if(food.foodId == food_data.foodId){
+                print("Already fetched")
+            }else{
+                FoodData.foodList.append(food)
+            }
+        }
+    }else{
+        FoodData.foodList.append(food)
+    }
 }
 
 func fetchFoodData(){
-    FoodData.foodList=[ItemModel(foodId: 1, foodName: "Noodles", foodDescription: "This is a chineese spicy noodles", foodPrice: 350.0, foodPhoto: "Food", foodDiscount: 10.0),ItemModel(foodId: 2, foodName: "Fried Rice", foodDescription: "This is a classic mongolian rice", foodPrice: 450.0, foodPhoto: "Food", foodDiscount: 10.0)]
+    firebaseFoodData.fetchFoodsData()
 }

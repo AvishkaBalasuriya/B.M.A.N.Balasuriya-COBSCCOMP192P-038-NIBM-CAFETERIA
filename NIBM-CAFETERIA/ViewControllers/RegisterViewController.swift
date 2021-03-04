@@ -33,6 +33,9 @@ class RegisterViewController: UIViewController {
         self.firebaseService.registerUser(emailAddress:txtEmailAddress.text!, mobileNumber: txtMobileNumber.text!, password: txtPassword.text!)
         {(result:Int?)->Void in
             if(result==1){
+                self.firebaseService.addUserToFirestore(user: UserModel(emailAddress: self.txtEmailAddress.text!, mobileNumber: self.txtMobileNumber.text!))
+                UserData.emailAddress=self.txtEmailAddress.text!
+                UserData.mobileNumber=self.txtMobileNumber.text!
                 let storePageViewController = self.storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
                 self.navigationController?.setNavigationBarHidden(true, animated: false)
                 self.navigationItem.leftBarButtonItem=nil

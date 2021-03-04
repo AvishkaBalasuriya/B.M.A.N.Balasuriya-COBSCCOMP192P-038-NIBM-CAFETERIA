@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         self.firebaseService.loginUser(emailAddress:txtEmailAddress.text!,password: txtPassword.text!)
         {(result:Int?)->Void in
             if(result==1){
+                UserData.emailAddress=self.txtEmailAddress.text!
                 let storePageViewController = self.storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
                 self.navigationController?.setNavigationBarHidden(true, animated: false)
                 self.navigationItem.leftBarButtonItem=nil

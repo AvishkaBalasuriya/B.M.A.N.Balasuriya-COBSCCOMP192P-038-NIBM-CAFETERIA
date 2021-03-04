@@ -12,11 +12,13 @@ class CartModel: NSObject {
     var foodName:String
     var foodQty:Int
     var totalPrice:Float
+    var foodPrice:Float
     
-    init(foodId:Int,foodName:String,foodQty:Int,totalPrice:Float) {
+    init(foodId:Int,foodName:String,foodQty:Int,totalPrice:Float,foodPrice:Float) {
         self.foodId=foodId
         self.foodName=foodName
         self.foodQty=foodQty
+        self.foodPrice=foodPrice
         self.totalPrice=totalPrice
     }
     

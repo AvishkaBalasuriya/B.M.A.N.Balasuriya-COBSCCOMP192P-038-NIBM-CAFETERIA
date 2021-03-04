@@ -29,9 +29,6 @@ class OrderViewController: UIViewController {
 
 extension OrderViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let foodViewController = storyboard?.instantiateViewController(withIdentifier:"FoodView") as? FoodViewController
-        foodViewController?.foodDetails = FoodData.foodList[indexPath.row]
-        self.navigationController?.pushViewController(foodViewController!, animated: true)
     }
 }
 

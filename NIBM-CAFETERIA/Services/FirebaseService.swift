@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class FirebaseService: NSObject {
+    let db = Firestore.firestore()
+    
     func registerUser(emailAddress:String,mobileNumber:String,password:String,result: @escaping (_ authResult: Int?)->Void){
         Auth.auth().createUser(withEmail: emailAddress, password: password) { (response, error) in
             if error != nil {
@@ -56,6 +59,51 @@ class FirebaseService: NSObject {
                 }
             }else {
                 result(1)
+            }
+        }
+    }
+    func addUserToFirestore(user:UserModel){
+        var ref: DocumentReference? = nil
+        ref = db.collection("users").addDocument(data: [
+            "emailAddress": user.emailAddress,
+            "mobileNumber": user.mobileNumber,
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    func fetchFoodsData(){
+        db.collection("foods").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let foodIdData:Int=document.data()["foodId"] as! Int
+                    let foodNameData:String=document.data()["foodName"] as! String
+                    let foodDescriptionData:String=document.data()["foodDescription"] as! String
+                    let foodPriceData:Float=document.data()["foodPrice"] as! Float
+                    let foodPhotoData:String=document.data()["foodPhoto"] as! String
+                    let foodDiscountData:Float=document.data()["foodDiscount"] as! Float
+                    addNewFood(food: ItemModel(foodId: foodIdData, foodName: foodNameData, foodDescription: foodDescriptionData, foodPrice: foodPriceData, foodPhoto: foodPhotoData, foodDiscount:foodDiscountData))
+                }
+            }
+        }
+    }
+    func fetchUsersData(){
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if(document.data()["emailAddress"] as! String==UserData.emailAddress){
+                        let emailAddress:String=document.data()["emailAddress"] as! String
+                        let mobileNumber:String=document.data()["mobileNumber"] as! String
+                        setUserData(user:UserModel(emailAddress: emailAddress, mobileNumber: mobileNumber))
+                    }
+                }
             }
         }
     }

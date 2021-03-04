@@ -19,7 +19,7 @@ class StoreTableCustomCell: UITableViewCell {
 
 class CartTableCustomCell: UITableViewCell {
     @IBOutlet weak var lblCartFoodName: UILabel!
-    @IBOutlet weak var stpCartQty: UIStepper!
+    @IBOutlet weak var stpFoodQty: UIStepper!
     @IBOutlet weak var lblCartFoodPrice: UILabel!
 }
 
@@ -29,24 +29,26 @@ class StorePageViewController: UIViewController {
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var lblItemCount: UILabel!
     @IBOutlet weak var foodCartView: UIView!
+    @IBOutlet weak var lblQtyCount: UILabel!
+    
+    var firebaseFoodData=FirebaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        self.navigationItem.leftBarButtonItem=nil
-        self.navigationItem.hidesBackButton=true
-        setFloatingButton()
         fetchFoodData()
+        setFloatingButton()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
         storeTableView.delegate=self
         storeTableView.dataSource=self
         cartTableView.delegate=self
         cartTableView.dataSource=self
         foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
+        storeTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         cartTableView.reloadData()
+        storeTableView.reloadData()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
         foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
     }
@@ -68,6 +70,16 @@ class StorePageViewController: UIViewController {
         removeCart()
         let orderViewController = storyboard?.instantiateViewController(withIdentifier:"OrderView") as? OrderViewController
         self.navigationController?.pushViewController(orderViewController!, animated: true)
+    }
+    @IBAction func stpQtyUpdate(_ sender: UIStepper) {
+        let foodId = sender.accessibilityIdentifier
+        for item in CartData.cartList{
+            if(String(item.foodId)==foodId){
+                item.foodQty=Int(sender.value)
+                item.totalPrice=item.foodPrice * Float(item.foodQty)
+            }
+        }
+        cartTableView.reloadData()
     }
     
 }
@@ -99,12 +111,27 @@ extension StorePageViewController:UITableViewDataSource{
             cell.lblFoodDescription.text = FoodData.foodList[indexPath.row].foodDescription
             cell.lblFoodPrice.text = String(format:"%.2f", FoodData.foodList[indexPath.row].foodPrice)
             cell.lblFoodDiscount.text = String(format:"%.2f", FoodData.foodList[indexPath.row].foodDiscount)
+            cell.layer.backgroundColor = UIColor.clear.cgColor
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+            cell.layer.shadowRadius = 4
+            cell.layer.shadowOpacity = 0.5
+            cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
+            cell.layer.masksToBounds = false
             return cell
         }else if tableView == cartTableView{
             let cell:CartTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCartCell") as! CartTableCustomCell
             cell.lblCartFoodName.text=CartData.cartList[indexPath.row].foodName
-            cell.stpCartQty.minimumValue=Double(CartData.cartList[indexPath.row].foodQty)
+//            cell.stpCartQty.minimumValue=Double(CartData.cartList[indexPath.row].foodQty)
+            cell.stpFoodQty.accessibilityIdentifier=String(CartData.cartList[indexPath.row].foodId)
             cell.lblCartFoodPrice.text=String(format:"%.2f", CartData.cartList[indexPath.row].totalPrice)
+            cell.layer.backgroundColor = UIColor.clear.cgColor
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+            cell.layer.shadowRadius = 4
+            cell.layer.shadowOpacity = 0.5
+            cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
+            cell.layer.masksToBounds = false
             return cell
         }else{
             let cell:UITableViewCell=UITableViewCell()
