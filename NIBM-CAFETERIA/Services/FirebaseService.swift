@@ -75,10 +75,11 @@ class FirebaseService: NSObject {
             }
         }
     }
-    func fetchFoodsData(){
+    func fetchFoodsData(completion: @escaping (Bool)->()) {
+        var foodList:[ItemModel]=[]
         db.collection("foods").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                completion(false)
             } else {
                 for document in querySnapshot!.documents {
                     let foodIdData:Int=document.data()["foodId"] as! Int
@@ -87,22 +88,34 @@ class FirebaseService: NSObject {
                     let foodPriceData:Float=document.data()["foodPrice"] as! Float
                     let foodPhotoData:String=document.data()["foodPhoto"] as! String
                     let foodDiscountData:Float=document.data()["foodDiscount"] as! Float
-                    addNewFood(food: ItemModel(foodId: foodIdData, foodName: foodNameData, foodDescription: foodDescriptionData, foodPrice: foodPriceData, foodPhoto: foodPhotoData, foodDiscount:foodDiscountData))
+                    foodList.append(ItemModel(foodId: foodIdData, foodName: foodNameData, foodDescription: foodDescriptionData, foodPrice: foodPriceData, foodPhoto: foodPhotoData, foodDiscount:foodDiscountData))
                 }
+                populateFoodList(foods:foodList)
+                completion(true)
             }
         }
     }
-    func fetchUsersData(){
+    func fetchUsersData(completion: @escaping (Bool)->()){
         db.collection("users").getDocuments() { (querySnapshot, err) in
+            var isFound=false
             if let err = err {
-                print("Error getting documents: \(err)")
+                completion(false)
             } else {
                 for document in querySnapshot!.documents {
                     if(document.data()["emailAddress"] as! String==UserData.emailAddress){
                         let emailAddress:String=document.data()["emailAddress"] as! String
                         let mobileNumber:String=document.data()["mobileNumber"] as! String
                         setUserData(user:UserModel(emailAddress: emailAddress, mobileNumber: mobileNumber))
+                        isFound=true
+                        break
+                    }else{
+                        isFound=false
                     }
+                }
+                if(isFound){
+                    completion(true)
+                }else{
+                    completion(false)
                 }
             }
         }

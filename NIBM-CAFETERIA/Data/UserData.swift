@@ -18,7 +18,3 @@ func setUserData(user:UserModel){
     UserData.emailAddress=user.emailAddress
     UserData.mobileNumber=user.mobileNumber
 }
-
-func fetchUserData(){
-    firebaseUserData.fetchUsersData()
-}

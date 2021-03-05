@@ -18,6 +18,7 @@
 		2E43FD0625EE68F300FB5AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */; };
 		2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */; };
 		2E63609C25F0E29F00E29CAC /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63609B25F0E29F00E29CAC /* FoodViewController.swift */; };
+		2EA6306D25F1F3BD00CB490C /* StoreTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6306C25F1F3BD00CB490C /* StoreTabBarController.swift */; };
 		2EAFBA7625F120C6001D7355 /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFBA7525F120C6001D7355 /* FoodData.swift */; };
 		2EAFBA7A25F12126001D7355 /* CartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFBA7925F12126001D7355 /* CartData.swift */; };
 		2EAFBA8A25F14124001D7355 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAFBA8925F14124001D7355 /* OrderData.swift */; };
@@ -46,6 +47,7 @@
 		2E43FD0525EE68F300FB5AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E43FD0C25EE6C5500FB5AAD /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		2E63609B25F0E29F00E29CAC /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		2EA6306C25F1F3BD00CB490C /* StoreTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTabBarController.swift; sourceTree = "<group>"; };
 		2EAFBA7525F120C6001D7355 /* FoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
 		2EAFBA7925F12126001D7355 /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
 		2EAFBA8925F14124001D7355 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				2E63609B25F0E29F00E29CAC /* FoodViewController.swift */,
 				2EAFBA8F25F14317001D7355 /* OrderViewController.swift */,
 				2EAFBAB225F17E0E001D7355 /* ProfileViewController.swift */,
+				2EA6306C25F1F3BD00CB490C /* StoreTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				2EF2D51F25EFE1B900633C6E /* CartModel.swift in Sources */,
 				2EF2D51C25EFDEAC00633C6E /* ItemModel.swift in Sources */,
 				2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */,
+				2EA6306D25F1F3BD00CB490C /* StoreTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

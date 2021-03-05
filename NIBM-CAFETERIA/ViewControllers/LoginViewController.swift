@@ -22,22 +22,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginUser(_ sender: Any) {
-        self.firebaseService.loginUser(emailAddress:txtEmailAddress.text!,password: txtPassword.text!)
-        {(result:Int?)->Void in
-            if(result==1){
-                UserData.emailAddress=self.txtEmailAddress.text!
-                let storePageViewController = self.storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
-                self.navigationController?.setNavigationBarHidden(true, animated: false)
-                self.navigationItem.leftBarButtonItem=nil
-                self.navigationItem.hidesBackButton=true
-                self.navigationController?.pushViewController(storePageViewController!, animated: true)
-            }else if(result==2){
-                self.showAlert(title: "Oops!", message: "Email is already registered")
-            }else if(result==3){
-                self.showAlert(title: "Oops!", message: "Username or password is incorrect")
-            }else if(result==0){
-                self.showAlert(title: "Oops!", message: "An error occures while registering")
-            }
+        if(txtEmailAddress.text != "" && txtPassword.text != ""){
+            login()
+        }else{
+            showAlert(title: "Oops!", message: "Please fill all fields")
         }
     }
 
@@ -58,6 +46,40 @@ class LoginViewController: UIViewController {
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func login(){
+        self.firebaseService.loginUser(emailAddress:txtEmailAddress.text!,password: txtPassword.text!)
+        {(result:Int?)->Void in
+            if(result==1){
+                UserData.emailAddress=self.txtEmailAddress.text!
+                firebaseFoodData.fetchFoodsData()
+                { (resultFetch) -> () in
+                    if(resultFetch){
+                        firebaseFoodData.fetchUsersData(){
+                            (resultFetch) -> () in
+                            if(resultFetch){
+                                let storeTabBarController = self.storyboard?.instantiateViewController(withIdentifier:"StoreTabBarController") as? StoreTabBarController
+                                self.navigationController?.setNavigationBarHidden(true, animated: false)
+                                self.navigationItem.leftBarButtonItem=nil
+                                self.navigationItem.hidesBackButton=true
+                                self.navigationController?.pushViewController(storeTabBarController!,animated: true)
+                            }else{
+                                self.showAlert(title:"Oops!",message:"Unable to load user data from server")
+                            }
+                        }
+                    }else{
+                        self.showAlert(title:"Oops!",message:"Unable to load food data from server")
+                    }
+                }
+            }else if(result==2){
+                self.showAlert(title: "Oops!", message: "Email is already registered")
+            }else if(result==3){
+                self.showAlert(title: "Oops!", message: "Username or password is incorrect")
+            }else if(result==0){
+                self.showAlert(title: "Oops!", message: "An error occures while registering")
+            }
+        }
     }
     
     func addKeyboardHider(){

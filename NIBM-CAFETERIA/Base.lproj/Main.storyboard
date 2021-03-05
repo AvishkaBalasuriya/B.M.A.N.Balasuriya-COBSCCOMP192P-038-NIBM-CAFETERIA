@@ -20,12 +20,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="ZSn-J3-NKR" kind="relationship" relationship="rootViewController" id="pte-uC-yAR"/>
+                        <segue destination="WfG-Bx-ohT" kind="relationship" relationship="rootViewController" id="lxo-HM-O1Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVW-1u-trH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="87"/>
+            <point key="canvasLocation" x="-17" y="87"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="xBW-uB-vFg">
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uf6-zX-gmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786.44859813084111" y="86.825053995680349"/>
+            <point key="canvasLocation" x="1520" y="87"/>
         </scene>
         <!--Food View Controller-->
         <scene sceneID="fYe-p1-57h">
@@ -347,9 +347,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5i-Qn-1dk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5768.6915887850464" y="86.825053995680349"/>
+            <point key="canvasLocation" x="5634" y="87"/>
         </scene>
-        <!--ORDER-->
+        <!--Order-->
         <scene sceneID="3cR-xW-f6Z">
             <objects>
                 <viewController storyboardIdentifier="OrderView" id="xJp-FT-UgS" customClass="OrderViewController" customModule="NIBM_CAFETERIA" customModuleProvider="target" sceneMemberID="viewController">
@@ -439,7 +439,7 @@
                             <constraint firstItem="ldm-1M-bMt" firstAttribute="top" secondItem="8sg-Bz-KlY" secondAttribute="top" id="yhE-7Q-zK8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ORDER" id="btJ-Wh-RUF"/>
+                    <tabBarItem key="tabBarItem" title="Order" id="btJ-Wh-RUF"/>
                     <connections>
                         <outlet property="noDataView" destination="bpd-xj-Wf4" id="gEU-WX-NjC"/>
                         <outlet property="tableOrderView" destination="Vwt-Cn-PSp" id="FUT-8Z-Epb"/>
@@ -449,7 +449,7 @@
             </objects>
             <point key="canvasLocation" x="4008" y="853"/>
         </scene>
-        <!--ACCOUNT-->
+        <!--Account-->
         <scene sceneID="fuA-CT-Pjt">
             <objects>
                 <viewController id="e2d-JP-yec" customClass="ProfileViewController" customModule="NIBM_CAFETERIA" customModuleProvider="target" sceneMemberID="viewController">
@@ -464,10 +464,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="399.66666666666669"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQu-r3-cdS">
-                                                <rect key="frame" x="20" y="20" width="129.33333333333334" height="359.66666666666669"/>
+                                                <rect key="frame" x="20" y="20" width="194" height="359.66666666666669"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PVC-bS-8Dd">
-                                                        <rect key="frame" x="14.666666666666657" y="131.66666666666666" width="100" height="96.666666666666671"/>
+                                                        <rect key="frame" x="47" y="131.66666666666666" width="100" height="96.666666666666671"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="cUq-hy-qlA"/>
                                                             <constraint firstAttribute="height" constant="100" id="gei-B5-LB5"/>
@@ -487,35 +487,31 @@
                                                 <edgeInsets key="layoutMargins" top="10" left="10" bottom="10" right="10"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kRP-Ph-UME">
-                                                <rect key="frame" x="149.33333333333331" y="20" width="129.33333333333331" height="359.66666666666669"/>
+                                                <rect key="frame" x="214" y="20" width="194" height="359.66666666666669"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAS-EE-7bl">
-                                                        <rect key="frame" x="9.9999999999999929" y="8" width="111.33333333333331" height="86"/>
+                                                        <rect key="frame" x="10" y="8" width="176" height="86"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGz-wv-A84">
-                                                        <rect key="frame" x="9.9999999999999929" y="94" width="111.33333333333331" height="85.666666666666686"/>
+                                                        <rect key="frame" x="10" y="94" width="176" height="85.666666666666686"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w00-Ba-rMe">
-                                                        <rect key="frame" x="9.9999999999999929" y="179.66666666666666" width="111.33333333333331" height="85.999999999999972"/>
+                                                        <rect key="frame" x="10" y="179.66666666666666" width="176" height="85.999999999999972"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hi-kf-989">
-                                                        <rect key="frame" x="9.9999999999999929" y="265.66666666666669" width="111.33333333333331" height="86"/>
+                                                        <rect key="frame" x="10" y="265.66666666666669" width="176" height="86"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="8"/>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWz-zR-MEk">
-                                                <rect key="frame" x="278.66666666666669" y="20" width="129.33333333333331" height="359.66666666666669"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
                                     </stackView>
@@ -603,15 +599,15 @@
                             <constraint firstItem="EO8-0y-Ebh" firstAttribute="bottom" secondItem="vPC-rh-dhQ" secondAttribute="bottom" id="zN6-p1-nEG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ACCOUNT" id="ZcY-Vl-tw1"/>
+                    <tabBarItem key="tabBarItem" title="Account" id="ZcY-Vl-tw1"/>
                     <connections>
-                        <outlet property="lblEmailAddress" destination="JGz-wv-A84" id="sc3-f8-s7d"/>
-                        <outlet property="lblMobileNumber" destination="w00-Ba-rMe" id="Irk-FD-wmP"/>
+                        <outlet property="lblEmail" destination="w00-Ba-rMe" id="DjI-ov-E5s"/>
+                        <outlet property="lblMobileNumber" destination="w00-Ba-rMe" id="bqK-I1-MuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvG-D8-gHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3163" y="853"/>
+            <point key="canvasLocation" x="3195" y="853"/>
         </scene>
         <!--Store Page View Controller-->
         <scene sceneID="aUa-fv-Llm">
@@ -622,7 +618,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="llh-DL-LKB">
-                                <rect key="frame" x="0.0" y="44" width="428" height="750"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aT-vP-i3D">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="100"/>
@@ -763,7 +759,7 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PHr-RY-sn7">
-                                        <rect key="frame" x="0.0" y="150" width="428" height="600"/>
+                                        <rect key="frame" x="0.0" y="150" width="428" height="605"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tbvCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tbvCell" id="tAP-z9-RpN" customClass="StoreTableCustomCell" customModule="NIBM_CAFETERIA" customModuleProvider="target">
@@ -871,7 +867,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UH1-xq-EtV"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="cartTableView" destination="ke3-Iq-Zao" id="q6s-RV-UEj"/>
                         <outlet property="foodCartView" destination="7aT-vP-i3D" id="B0S-gG-zjO"/>
@@ -881,7 +876,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGZ-a2-YjH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4907.9439252336442" y="86.825053995680349"/>
+            <point key="canvasLocation" x="4807" y="87"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="7BE-v8-hs3">
@@ -1066,7 +1061,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p74-Vj-DRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561.682242990654" y="86.825053995680349"/>
+            <point key="canvasLocation" x="744" y="87"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="nwC-Hh-b4A">
@@ -1224,11 +1219,12 @@
             </objects>
             <point key="canvasLocation" x="2325.700934579439" y="86.825053995680349"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Store Tab Bar Controller-->
         <scene sceneID="o0x-HA-pyP">
             <objects>
-                <tabBarController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="Utf-K7-YQU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StoreTabBarController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="Utf-K7-YQU" customClass="StoreTabBarController" customModule="NIBM_CAFETERIA" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="mnK-rz-PFE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="VoQ-r7-p0j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1236,33 +1232,31 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hQl-x7-KI6" kind="relationship" relationship="viewControllers" id="iz5-dV-7ED"/>
                         <segue destination="e2d-JP-yec" kind="relationship" relationship="viewControllers" id="bIw-PH-Rgk"/>
                         <segue destination="xJp-FT-UgS" kind="relationship" relationship="viewControllers" id="t1k-Jg-dQJ"/>
+                        <segue destination="yjl-9X-kw0" kind="relationship" relationship="viewControllers" id="ZwH-CI-Avo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXQ-oA-8oo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3195" y="87"/>
         </scene>
-        <!--STORE-->
-        <scene sceneID="lah-rt-HMA">
+        <!--Store-->
+        <scene sceneID="U9T-FI-6U7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="hQl-x7-KI6" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="STORE" id="IQM-ao-zOR"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NPN-mA-DTA">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8or-XX-XbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="yjl-9X-kw0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Store" id="BHA-rd-pvb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IL0-vh-HiR">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="FXS-iM-Rpd" kind="relationship" relationship="rootViewController" id="dUO-kb-bT3"/>
+                        <segue destination="FXS-iM-Rpd" kind="relationship" relationship="rootViewController" id="mp9-xL-8oT"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dKf-fQ-r1o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4007.9439252336447" y="86.825053995680349"/>
+            <point key="canvasLocation" x="4008" y="87"/>
         </scene>
     </scenes>
     <resources>

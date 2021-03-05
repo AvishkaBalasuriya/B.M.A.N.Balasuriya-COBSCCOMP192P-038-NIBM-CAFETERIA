@@ -35,7 +35,7 @@ class FoodViewController: UIViewController {
         floatingButton.backgroundColor = .systemYellow
         floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
         view.addSubview(floatingButton)
-        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant:-100))
+        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant:-50))
         view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX , relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
     }
     

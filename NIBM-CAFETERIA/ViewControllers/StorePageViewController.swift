@@ -35,7 +35,6 @@ class StorePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFoodData()
         setFloatingButton()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
         storeTableView.delegate=self
@@ -61,7 +60,7 @@ class StorePageViewController: UIViewController {
         floatingButton.backgroundColor = .systemYellow
         floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
         view.addSubview(floatingButton)
-        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant:-100))
+        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant:-50))
         view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX , relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
     }
     
@@ -122,7 +121,6 @@ extension StorePageViewController:UITableViewDataSource{
         }else if tableView == cartTableView{
             let cell:CartTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCartCell") as! CartTableCustomCell
             cell.lblCartFoodName.text=CartData.cartList[indexPath.row].foodName
-//            cell.stpCartQty.minimumValue=Double(CartData.cartList[indexPath.row].foodQty)
             cell.stpFoodQty.accessibilityIdentifier=String(CartData.cartList[indexPath.row].foodId)
             cell.lblCartFoodPrice.text=String(format:"%.2f", CartData.cartList[indexPath.row].totalPrice)
             cell.layer.backgroundColor = UIColor.clear.cgColor

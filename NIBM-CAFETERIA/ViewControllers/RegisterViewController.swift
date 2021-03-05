@@ -30,22 +30,16 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        self.firebaseService.registerUser(emailAddress:txtEmailAddress.text!, mobileNumber: txtMobileNumber.text!, password: txtPassword.text!)
-        {(result:Int?)->Void in
-            if(result==1){
-                self.firebaseService.addUserToFirestore(user: UserModel(emailAddress: self.txtEmailAddress.text!, mobileNumber: self.txtMobileNumber.text!))
-                UserData.emailAddress=self.txtEmailAddress.text!
-                UserData.mobileNumber=self.txtMobileNumber.text!
-                let storePageViewController = self.storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
-                self.navigationController?.setNavigationBarHidden(true, animated: false)
-                self.navigationItem.leftBarButtonItem=nil
-                self.navigationItem.hidesBackButton=true
-                self.navigationController?.pushViewController(storePageViewController!, animated: true)
-            }else if(result==2){
-                self.showAlert(title: "Oops!", message: "Email is already registered")
-            }else if(result==0){
-                self.showAlert(title: "Oops!", message: "An error occures while registering")
+        if(txtEmailAddress.text != "" && txtPassword.text != "" && txtMobileNumber.text != ""){
+            let decimalCharacters = CharacterSet.decimalDigits
+            let decimalRange = txtMobileNumber.text!.rangeOfCharacter(from: decimalCharacters)
+            if decimalRange != nil {
+                showAlert(title: "Oops!", message: "Invalid phone number")
+            }else{
+                register()
             }
+        }else{
+            showAlert(title: "Oops!", message: "Please fill all fields")
         }
     }
     
@@ -71,10 +65,31 @@ class RegisterViewController: UIViewController {
         lblLogin.addGestureRecognizer(tap)
     }
     
-    func validateInputs(email:String,mobileNumber:String,password:String){
-//        if(((email!="" && email!=nil) && (mobileNumber!="" && mobileNumber!=nil) && (password!="" && password!=nil))){
-//
-//        }else if()
+    func register(){
+        self.firebaseService.registerUser(emailAddress:txtEmailAddress.text!, mobileNumber: txtMobileNumber.text!, password: txtPassword.text!)
+        {(result:Int?)->Void in
+            if(result==1){
+                firebaseFoodData.fetchFoodsData()
+                { (resultFetch) -> () in
+                    if(resultFetch){
+                        self.firebaseService.addUserToFirestore(user: UserModel(emailAddress: self.txtEmailAddress.text!, mobileNumber: self.txtMobileNumber.text!))
+                        UserData.emailAddress=self.txtEmailAddress.text!
+                        UserData.mobileNumber=self.txtMobileNumber.text!
+                        let storeTabBarController = self.storyboard?.instantiateViewController(withIdentifier:"StoreTabBarController") as? StoreTabBarController
+                        self.navigationController?.setNavigationBarHidden(true, animated: false)
+                        self.navigationItem.leftBarButtonItem=nil
+                        self.navigationItem.hidesBackButton=true
+                        self.navigationController?.pushViewController(storeTabBarController!,animated: true)
+                    }else{
+                        self.showAlert(title:"Oops!",message:"Unable to load food data from server")
+                    }
+                }
+            }else if(result==2){
+                self.showAlert(title: "Oops!", message: "Email is already registered")
+            }else if(result==0){
+                self.showAlert(title: "Oops!", message: "An error occures while registering")
+            }
+        }
     }
 }
 
