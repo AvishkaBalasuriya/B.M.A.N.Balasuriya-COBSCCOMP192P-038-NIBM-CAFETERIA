@@ -31,12 +31,14 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButton(_ sender: Any) {
         if(txtEmailAddress.text != "" && txtPassword.text != "" && txtMobileNumber.text != ""){
-            let decimalCharacters = CharacterSet.decimalDigits
-            let decimalRange = txtMobileNumber.text!.rangeOfCharacter(from: decimalCharacters)
-            if decimalRange != nil {
-                showAlert(title: "Oops!", message: "Invalid phone number")
+            if(txtPassword.text!.count>=8){
+                if(txtMobileNumber.text!.count==10){
+                    register()
+                }else{
+                    showAlert(title: "Oops!", message: "Mobile number needs to be 10 digits")
+                }
             }else{
-                register()
+                showAlert(title: "Oops!", message: "Password needs to be at least 8 digits")
             }
         }else{
             showAlert(title: "Oops!", message: "Please fill all fields")

@@ -720,28 +720,28 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEk-fT-KVt">
                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="50"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="Category 1">
+                                                        <state key="normal" title="Fast Food">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6H-CC-QX8">
                                                         <rect key="frame" x="107" y="0.0" width="107" height="50"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="Category 2">
+                                                        <state key="normal" title="Rice &amp; Curry">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2W-ax-giH">
                                                         <rect key="frame" x="214" y="0.0" width="107" height="50"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="Category 3">
+                                                        <state key="normal" title="Pastry">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="occ-hf-Z2n">
                                                         <rect key="frame" x="321" y="0.0" width="107" height="50"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="Category 4">
+                                                        <state key="normal" title="Drinks">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                     </button>
@@ -1232,9 +1232,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="e2d-JP-yec" kind="relationship" relationship="viewControllers" id="bIw-PH-Rgk"/>
-                        <segue destination="xJp-FT-UgS" kind="relationship" relationship="viewControllers" id="t1k-Jg-dQJ"/>
                         <segue destination="yjl-9X-kw0" kind="relationship" relationship="viewControllers" id="ZwH-CI-Avo"/>
+                        <segue destination="xJp-FT-UgS" kind="relationship" relationship="viewControllers" id="eYU-ct-2F7"/>
+                        <segue destination="e2d-JP-yec" kind="relationship" relationship="viewControllers" id="o7v-Sw-Fnr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXQ-oA-8oo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1244,7 +1244,6 @@
         <!--Store-->
         <scene sceneID="U9T-FI-6U7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8or-XX-XbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="yjl-9X-kw0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Store" id="BHA-rd-pvb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IL0-vh-HiR">
@@ -1255,6 +1254,7 @@
                         <segue destination="FXS-iM-Rpd" kind="relationship" relationship="rootViewController" id="mp9-xL-8oT"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8or-XX-XbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4008" y="87"/>
         </scene>
