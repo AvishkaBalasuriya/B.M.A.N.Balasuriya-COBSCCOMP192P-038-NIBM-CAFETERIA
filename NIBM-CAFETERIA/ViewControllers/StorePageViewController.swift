@@ -30,7 +30,7 @@ class StorePageViewController: UIViewController {
     @IBOutlet weak var lblItemCount: UILabel!
     @IBOutlet weak var foodCartView: UIView!
     @IBOutlet weak var lblQtyCount: UILabel!
-    
+    var floatingButton = MDCFloatingButton()
     var firebaseFoodData=FirebaseService()
     
     override func viewDidLoad() {
@@ -46,14 +46,14 @@ class StorePageViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
+        floatingButton.isHidden = (CartData.cartList.count==0 ? true:false)
         cartTableView.reloadData()
         storeTableView.reloadData()
         lblItemCount.text!=String(CartData.cartList.count)+" Items"
-        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
     }
     
     func setFloatingButton() {
-        let floatingButton = MDCFloatingButton()
         floatingButton.mode = .expanded
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
         floatingButton.setTitle("Order", for: .normal)
