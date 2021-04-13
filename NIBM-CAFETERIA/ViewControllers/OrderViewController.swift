@@ -22,8 +22,8 @@ class OrderViewController: UIViewController {
         super.viewDidLoad()
         tableOrderView.delegate=self
         tableOrderView.dataSource=self
-        tableOrderView.isHidden = (OrderData.order.orderId != "" ?true:false)
-        noDataView.isHidden = (OrderData.order.orderId != "" ?false:true)
+        tableOrderView.isHidden = (OrderData.order.items.count == 0 ?true:false)
+        noDataView.isHidden = (OrderData.order.items.count == 0 ?false:true)
     }
 }
 
@@ -34,13 +34,13 @@ extension OrderViewController:UITableViewDelegate{
 
 extension OrderViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OrderData.itemList.count
+        return OrderData.order.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:OrderTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tblOrderData") as! OrderTableCustomCell
-        cell.lblOrderId.text = "Order ID "+String(OrderData.orderId)
-        cell.lblOrderStatus.text = OrderData.orderStatus as! String
+        cell.lblOrderId.text = "Order ID "+String(OrderData.order.orderId)
+        cell.lblOrderStatus.text = "Pending"
         return cell
     }
 }

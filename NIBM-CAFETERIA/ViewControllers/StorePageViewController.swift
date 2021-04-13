@@ -40,14 +40,14 @@ class StorePageViewController: UIViewController {
             completion in
             
             if completion{
+                self.foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
+                self.storeTableView.isHidden = (ItemData.itemList.count==0 ? true:false)
                 self.setFloatingButton()
                 self.lblItemCount.text!=String(CartData.cartItemList.count)+" Items"
                 self.storeTableView.delegate=self
                 self.storeTableView.dataSource=self
-                self.storeTableView.isHidden = (ItemData.itemList.count==0 ? true:false)
                 self.cartTableView.delegate=self
                 self.cartTableView.dataSource=self
-                self.foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
                 self.storeTableView.reloadData()
             }
             
@@ -76,8 +76,17 @@ class StorePageViewController: UIViewController {
     @objc func tap(_ sender: Any) {
         let order = Order(orderId: generateOrderId(), userEmailAddress: UserData.emailAddress, items: CartData.cartItemList, total: generateOrderTotal(), status: 0)
         OrderData.order=order
-        let orderViewController = storyboard?.instantiateViewController(withIdentifier:"OrderView") as? OrderViewController
-        self.navigationController?.pushViewController(orderViewController!, animated: true)
+        
+        self.firestoreDataService.addNewOrder(order: order){
+            completion in
+            
+            if completion==201{
+                let orderViewController = self.storyboard?.instantiateViewController(withIdentifier:"OrderView") as? OrderViewController
+                self.navigationController?.pushViewController(orderViewController!, animated: true)
+            }else{
+                self.showAlert(title: "Oops!", message: "Unable to place order. Please try again")
+            }
+        }
     }
     @IBAction func stpQtyUpdate(_ sender: UIStepper) {
         let itemId = sender.accessibilityIdentifier
@@ -85,9 +94,16 @@ class StorePageViewController: UIViewController {
             if(String(item.itemId)==itemId){
                 item.itemQty=Int(sender.value)
                 item.totalPrice=item.itemPrice * Float(item.itemQty)
+                print(item.totalPrice)
             }
         }
         cartTableView.reloadData()
+    }
+    
+    func showAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -118,7 +134,13 @@ extension StorePageViewController:UITableViewDataSource{
             cell.lblFoodName.text = ItemData.itemList[indexPath.row].itemName
             cell.lblFoodDescription.text = ItemData.itemList[indexPath.row].itemDescription
             cell.lblFoodPrice.text = String(format:"%.2f", ItemData.itemList[indexPath.row].itemPrice)
-            cell.lblFoodDiscount.text = String(format:"%.2f", ItemData.itemList[indexPath.row].itemDiscount)
+            
+            if ItemData.itemList[indexPath.row].itemDiscount == 0.0{
+                cell.lblFoodDiscount.isHidden=true
+            }else{
+                cell.lblFoodDiscount.text=String(format:"%.2f", ItemData.itemList[indexPath.row].itemDiscount)
+            }
+    
             cell.layer.backgroundColor = UIColor.clear.cgColor
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -129,7 +151,7 @@ extension StorePageViewController:UITableViewDataSource{
             return cell
         }else if tableView == cartTableView{
             let cell:CartTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCartCell") as! CartTableCustomCell
-            cell.lblCartFoodName.text=ItemData.itemList[indexPath.row].itemName
+            cell.lblCartFoodName.text=CartData.cartItemList[indexPath.row].itemName
             cell.stpFoodQty.accessibilityIdentifier=String(CartData.cartItemList[indexPath.row].itemId)
             cell.lblCartFoodPrice.text=String(format:"%.2f", CartData.cartItemList[indexPath.row].totalPrice)
             cell.layer.backgroundColor = UIColor.clear.cgColor

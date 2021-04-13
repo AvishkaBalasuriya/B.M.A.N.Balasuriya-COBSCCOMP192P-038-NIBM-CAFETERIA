@@ -61,5 +61,21 @@ class FirestoreDataService: NSObject {
             }
         }
     }
+    
+    func addNewOrder(order:Order,completion: @escaping (Int)->()){
+        db.collection("orders").document(order.orderId).setData([
+            "orderId":order.orderId,
+            "userEmailAddress":order.userEmailAddress,
+            "items":order.items.map { $0.itemId },
+            "total":order.total,
+            "status":order.status
+        ]){ err in
+            if err != nil{
+                completion(500)
+            } else {
+                completion(201)
+            }
+        }
+    }
 
 }

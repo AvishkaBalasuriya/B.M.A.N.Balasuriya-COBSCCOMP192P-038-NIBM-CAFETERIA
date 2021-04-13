@@ -8,18 +8,10 @@
 import Foundation
 
 struct OrderData {
-    static let order:Order = Order()
+    static var order:Order = Order()
 }
 
 func generateOrderId()->String{
     let uuid = NSUUID().uuidString
     return uuid
-}
-
-func generateOrderTotal()->Float{
-    var total:Float = 0.0
-    for item in OrderData.order.items{
-        total+=item.itemPrice
-    }
-    return total
 }

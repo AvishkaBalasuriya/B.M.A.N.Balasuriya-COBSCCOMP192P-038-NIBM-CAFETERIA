@@ -18,3 +18,11 @@ func addNewItem(item:CartItem){
 func removeCart(){
     CartData.cartItemList=[]
 }
+
+func generateOrderTotal()->Float{
+    var total:Float = 0.0
+    for item in CartData.cartItemList{
+        total+=item.totalPrice
+    }
+    return total
+}

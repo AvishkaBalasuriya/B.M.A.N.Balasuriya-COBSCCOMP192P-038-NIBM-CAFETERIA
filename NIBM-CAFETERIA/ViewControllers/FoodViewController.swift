@@ -22,7 +22,14 @@ class FoodViewController: UIViewController {
         setFloatingButton()
         imgFoodImage.image = UIImage(named: itemDetails.itemThumbnail)
         lblFoodName.text = itemDetails.itemName
-        lblFoodOffer.text = String(format:"%.2f", itemDetails.itemDiscount)
+        
+        if itemDetails.itemDiscount == 0.0{
+            lblFoodOffer.isHidden=true
+        }else{
+            lblFoodOffer.text=String(format:"%.2f", itemDetails.itemDiscount)
+        }
+        
+        
         lblFoodPrice.text = String(format:"%.2f", itemDetails.itemPrice)
         txtvFoodDescription.text = itemDetails.itemDescription
     }
@@ -40,7 +47,7 @@ class FoodViewController: UIViewController {
     }
     
     @objc func tap(_ sender: Any) {
-        addNewItem(item: CartItem(itemId: itemDetails.itemId, itemQty: 1,itemPrice:itemDetails.itemPrice, totalPrice: itemDetails.itemPrice))
+        addNewItem(item: CartItem(itemId: itemDetails.itemId,itemName:itemDetails.itemName, itemQty: 1,itemPrice:itemDetails.itemPrice, totalPrice: itemDetails.itemPrice))
         let storeViewController = storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
         self.navigationController?.pushViewController(storeViewController!, animated: true)
     }
