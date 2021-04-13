@@ -14,7 +14,7 @@ struct UserData {
     static var mobileNumber:String = ""
 }
 
-func setUserData(user:UserModel){
+func setUserData(user:User){
     UserData.emailAddress=user.emailAddress
     UserData.mobileNumber=user.mobileNumber
 }

@@ -32,25 +32,34 @@ class StorePageViewController: UIViewController {
     @IBOutlet weak var lblQtyCount: UILabel!
     var floatingButton = MDCFloatingButton()
     var firebaseFoodData=FirebaseService()
+    let firestoreDataService = FirestoreDataService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFloatingButton()
-        lblItemCount.text!=String(CartData.cartList.count)+" Items"
-        storeTableView.delegate=self
-        storeTableView.dataSource=self
-        cartTableView.delegate=self
-        cartTableView.dataSource=self
-        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
-        storeTableView.reloadData()
+        self.firestoreDataService.fetchItems(){
+            completion in
+            
+            if completion{
+                self.setFloatingButton()
+                self.lblItemCount.text!=String(CartData.cartItemList.count)+" Items"
+                self.storeTableView.delegate=self
+                self.storeTableView.dataSource=self
+                self.storeTableView.isHidden = (ItemData.itemList.count==0 ? true:false)
+                self.cartTableView.delegate=self
+                self.cartTableView.dataSource=self
+                self.foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
+                self.storeTableView.reloadData()
+            }
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        foodCartView.isHidden = (CartData.cartList.count==0 ? true:false)
-        floatingButton.isHidden = (CartData.cartList.count==0 ? true:false)
+        foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
+        floatingButton.isHidden = (CartData.cartItemList.count==0 ? true:false)
         cartTableView.reloadData()
         storeTableView.reloadData()
-        lblItemCount.text!=String(CartData.cartList.count)+" Items"
+        lblItemCount.text!=String(CartData.cartItemList.count)+" Items"
     }
     
     func setFloatingButton() {
@@ -65,17 +74,17 @@ class StorePageViewController: UIViewController {
     }
     
     @objc func tap(_ sender: Any) {
-        addNewOrder(order: OrderModel(orderId: OrderData.orderId, orderStatus: "Pending"))
-        removeCart()
+        let order = Order(orderId: generateOrderId(), userEmailAddress: UserData.emailAddress, items: CartData.cartItemList, total: generateOrderTotal(), status: 0)
+        OrderData.order=order
         let orderViewController = storyboard?.instantiateViewController(withIdentifier:"OrderView") as? OrderViewController
         self.navigationController?.pushViewController(orderViewController!, animated: true)
     }
     @IBAction func stpQtyUpdate(_ sender: UIStepper) {
-        let foodId = sender.accessibilityIdentifier
-        for item in CartData.cartList{
-            if(String(item.foodId)==foodId){
-                item.foodQty=Int(sender.value)
-                item.totalPrice=item.foodPrice * Float(item.foodQty)
+        let itemId = sender.accessibilityIdentifier
+        for item in CartData.cartItemList{
+            if(String(item.itemId)==itemId){
+                item.itemQty=Int(sender.value)
+                item.totalPrice=item.itemPrice * Float(item.itemQty)
             }
         }
         cartTableView.reloadData()
@@ -86,7 +95,7 @@ class StorePageViewController: UIViewController {
 extension StorePageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let foodViewController = storyboard?.instantiateViewController(withIdentifier:"FoodView") as? FoodViewController
-        foodViewController?.foodDetails = FoodData.foodList[indexPath.row]
+        foodViewController?.itemDetails = ItemData.itemList[indexPath.row]
         self.navigationController?.pushViewController(foodViewController!, animated: true)
     }
 }
@@ -94,9 +103,9 @@ extension StorePageViewController:UITableViewDelegate{
 extension StorePageViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == storeTableView{
-            return FoodData.foodList.count
+            return ItemData.itemList.count
         }else if tableView == cartTableView{
-            return CartData.cartList.count
+            return CartData.cartItemList.count
         }else{
             return 0
         }
@@ -105,11 +114,11 @@ extension StorePageViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == storeTableView{
             let cell:StoreTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCell") as! StoreTableCustomCell
-            cell.imgFoodImage.image = UIImage(named: FoodData.foodList[indexPath.row].foodPhoto)
-            cell.lblFoodName.text = FoodData.foodList[indexPath.row].foodName
-            cell.lblFoodDescription.text = FoodData.foodList[indexPath.row].foodDescription
-            cell.lblFoodPrice.text = String(format:"%.2f", FoodData.foodList[indexPath.row].foodPrice)
-            cell.lblFoodDiscount.text = String(format:"%.2f", FoodData.foodList[indexPath.row].foodDiscount)
+            cell.imgFoodImage.image = UIImage(named: ItemData.itemList[indexPath.row].itemThumbnail)
+            cell.lblFoodName.text = ItemData.itemList[indexPath.row].itemName
+            cell.lblFoodDescription.text = ItemData.itemList[indexPath.row].itemDescription
+            cell.lblFoodPrice.text = String(format:"%.2f", ItemData.itemList[indexPath.row].itemPrice)
+            cell.lblFoodDiscount.text = String(format:"%.2f", ItemData.itemList[indexPath.row].itemDiscount)
             cell.layer.backgroundColor = UIColor.clear.cgColor
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -120,9 +129,9 @@ extension StorePageViewController:UITableViewDataSource{
             return cell
         }else if tableView == cartTableView{
             let cell:CartTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCartCell") as! CartTableCustomCell
-            cell.lblCartFoodName.text=CartData.cartList[indexPath.row].foodName
-            cell.stpFoodQty.accessibilityIdentifier=String(CartData.cartList[indexPath.row].foodId)
-            cell.lblCartFoodPrice.text=String(format:"%.2f", CartData.cartList[indexPath.row].totalPrice)
+            cell.lblCartFoodName.text=ItemData.itemList[indexPath.row].itemName
+            cell.stpFoodQty.accessibilityIdentifier=String(CartData.cartItemList[indexPath.row].itemId)
+            cell.lblCartFoodPrice.text=String(format:"%.2f", CartData.cartItemList[indexPath.row].totalPrice)
             cell.layer.backgroundColor = UIColor.clear.cgColor
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOffset = CGSize(width: 0, height: 0)

@@ -7,12 +7,26 @@
 
 import UIKit
 
-class OrderModel: NSObject {
-    var orderId:Int = 0
-    var orderStatus:String="Pending"
+class Order: NSObject {
+    var orderId:String
+    var userEmailAddress:String
+    var items:[CartItem]
+    var total:Float
+    var status:Int
     
-    init(orderId:Int,orderStatus:String) {
+    init(orderId:String,userEmailAddress:String,items:[CartItem],total:Float,status:Int) {
         self.orderId=orderId
-        self.orderStatus=orderStatus
+        self.userEmailAddress=userEmailAddress
+        self.items=items
+        self.total=total
+        self.status=status
+    }
+    
+    override init(){
+        self.orderId=""
+        self.userEmailAddress=""
+        self.items=[]
+        self.total=0.0
+        self.status=0
     }
 }

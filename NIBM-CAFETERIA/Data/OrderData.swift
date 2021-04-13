@@ -8,14 +8,18 @@
 import Foundation
 
 struct OrderData {
-    static var orderId:Int = 1
-    static var orderList:[OrderModel] = []{
-        didSet{
-            orderId+=1
-        }
-    }
+    static let order:Order = Order()
 }
 
-func addNewOrder(order:OrderModel){
-    OrderData.orderList.append(order)
+func generateOrderId()->String{
+    let uuid = NSUUID().uuidString
+    return uuid
+}
+
+func generateOrderTotal()->Float{
+    var total:Float = 0.0
+    for item in OrderData.order.items{
+        total+=item.itemPrice
+    }
+    return total
 }

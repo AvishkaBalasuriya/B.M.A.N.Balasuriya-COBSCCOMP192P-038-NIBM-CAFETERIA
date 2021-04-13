@@ -8,13 +8,13 @@
 import Foundation
 
 struct CartData {
-    static var cartList:[CartModel] = []
+    static var cartItemList:[CartItem] = []
 }
 
-func addNewItem(item:CartModel){
-    CartData.cartList.append(item)
+func addNewItem(item:CartItem){
+    CartData.cartItemList.append(item)
 }
 
 func removeCart(){
-    CartData.cartList=[]
+    CartData.cartItemList=[]
 }

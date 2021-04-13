@@ -1260,8 +1260,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Food" width="236" height="214"/>
-        <image name="Logo" width="96" height="96"/>
+        <image name="Food" width="78.666664123535156" height="71.333335876464844"/>
+        <image name="Logo" width="32" height="32"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.badge.plus.fill" catalog="system" width="128" height="124"/>
         <namedColor name="AccentColor">

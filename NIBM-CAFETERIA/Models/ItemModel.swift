@@ -7,20 +7,32 @@
 
 import UIKit
 
-class ItemModel: NSObject {
-    var foodId:Int
-    var foodName:String
-    var foodDescription:String
-    var foodPrice:Float
-    var foodDiscount:Float
-    var foodPhoto:String
+class Item: NSObject {
+    var itemId:String
+    var itemName:String
+    var itemThumbnail:String
+    var itemDescription:String
+    var itemPrice:Float
+    var itemDiscount:Float
+    var isAvailable:Bool
+
+    init(itemId:String,itemName:String,itemThumbnail:String,itemDescription:String,itemPrice:Float,itemDiscount:Float=0.0,isAvailable:Bool=true) {
+        self.itemId=itemId
+        self.itemName=itemName
+        self.itemThumbnail=itemThumbnail
+        self.itemDescription=itemDescription
+        self.itemPrice=itemPrice
+        self.itemDiscount=itemDiscount
+        self.isAvailable=isAvailable
+    }
     
-    init(foodId:Int,foodName:String,foodDescription:String,foodPrice:Float,foodPhoto:String,foodDiscount:Float) {
-        self.foodId=foodId
-        self.foodName=foodName
-        self.foodDescription=foodDescription
-        self.foodPrice=foodPrice
-        self.foodDiscount=foodDiscount
-        self.foodPhoto=foodPhoto
+    override init(){
+        self.itemId=""
+        self.itemName=""
+        self.itemThumbnail=""
+        self.itemDescription=""
+        self.itemPrice=0.0
+        self.itemDiscount=0.0
+        self.isAvailable=false
     }
 }

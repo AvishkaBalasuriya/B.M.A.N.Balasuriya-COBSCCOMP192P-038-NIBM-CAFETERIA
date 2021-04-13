@@ -15,16 +15,16 @@ class FoodViewController: UIViewController {
     @IBOutlet weak var lblFoodPrice: UILabel!
     @IBOutlet weak var txtvFoodDescription: UITextView!
     
-    var foodDetails:ItemModel = ItemModel(foodId: 0, foodName: "", foodDescription:"", foodPrice: 0.0, foodPhoto: "", foodDiscount: 0.0)
+    var itemDetails:Item = Item()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setFloatingButton()
-        imgFoodImage.image = UIImage(named: foodDetails.foodPhoto)
-        lblFoodName.text = foodDetails.foodName
-        lblFoodOffer.text = String(format:"%.2f", foodDetails.foodPrice)
-        lblFoodPrice.text = String(format:"%.2f", foodDetails.foodPrice)
-        txtvFoodDescription.text = foodDetails.foodDescription
+        imgFoodImage.image = UIImage(named: itemDetails.itemThumbnail)
+        lblFoodName.text = itemDetails.itemName
+        lblFoodOffer.text = String(format:"%.2f", itemDetails.itemDiscount)
+        lblFoodPrice.text = String(format:"%.2f", itemDetails.itemPrice)
+        txtvFoodDescription.text = itemDetails.itemDescription
     }
     
     func setFloatingButton() {
@@ -40,7 +40,7 @@ class FoodViewController: UIViewController {
     }
     
     @objc func tap(_ sender: Any) {
-        addNewItem(item: CartModel(foodId: foodDetails.foodId, foodName: foodDetails.foodName, foodQty: 1, totalPrice: foodDetails.foodPrice*1,foodPrice: foodDetails.foodPrice))
+        addNewItem(item: CartItem(itemId: itemDetails.itemId, itemQty: 1,itemPrice:itemDetails.itemPrice, totalPrice: itemDetails.itemPrice))
         let storeViewController = storyboard?.instantiateViewController(withIdentifier:"StorePageView") as? StorePageViewController
         self.navigationController?.pushViewController(storeViewController!, animated: true)
     }

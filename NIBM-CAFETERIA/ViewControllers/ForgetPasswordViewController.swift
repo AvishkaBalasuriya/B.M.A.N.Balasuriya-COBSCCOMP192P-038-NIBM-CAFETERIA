@@ -22,12 +22,13 @@ class ForgetPasswordViewController: UIViewController {
     @IBAction func resetPassword(_ sender: Any) {
         self.firebaseService.forgetPassword(emailAddress:txtEmailAddress.text!)
         {(result:Int?)->Void in
-            if(result==1){
+            if(result==200){
+                self.showAlert(title: "Success", message: "Password reset link sent to your email")
                 let loginViewController = self.storyboard?.instantiateViewController(withIdentifier:"LoginView") as? LoginViewController
                 self.navigationController?.pushViewController(loginViewController!, animated: true)
-            }else if(result==2){
-                self.showAlert(title: "Oops!", message: "Email is already registered")
-            }else if(result==0){
+            }else if(result==401){
+                self.showAlert(title: "Oops!", message: "Invalid email address")
+            }else if(result==500){
                 self.showAlert(title: "Oops!", message: "An error occures while registering")
             }
         }
