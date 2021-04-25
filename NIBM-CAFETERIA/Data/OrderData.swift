@@ -8,7 +8,15 @@
 import Foundation
 
 struct OrderData {
-    static var order:Order = Order()
+    static var orderList:[String:Order] = [String: Order]()
+}
+
+func populateOrderList(orders:[Order]){
+    var orderList:[String:Order]=[String: Order]()
+    for order in orders{
+        orderList[order.orderId]=order
+    }
+    OrderData.orderList=orderList
 }
 
 func generateOrderId()->String{

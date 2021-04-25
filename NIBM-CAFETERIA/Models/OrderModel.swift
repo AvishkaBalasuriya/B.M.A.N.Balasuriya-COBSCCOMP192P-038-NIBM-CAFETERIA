@@ -29,4 +29,18 @@ class Order: NSObject {
         self.total=0.0
         self.status=0
     }
+    
+    func toAnyObject() -> Any {
+        var cartItemList:[Any]=[]
+        for item in self.items{
+            cartItemList.append([
+                "itemId":item.itemId,
+                "itemName":item.itemName,
+                "itemQty": item.itemQty,
+                "itemPrice":item.itemPrice,
+                "totalPrice":item.totalPrice
+            ])
+        }
+        return cartItemList
+    }
 }

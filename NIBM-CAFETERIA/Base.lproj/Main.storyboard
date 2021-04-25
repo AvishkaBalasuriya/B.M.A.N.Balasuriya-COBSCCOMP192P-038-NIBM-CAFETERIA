@@ -243,37 +243,37 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="428" height="133"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fA-lA-1io">
-                                                                        <rect key="frame" x="20" y="8" width="129.33333333333334" height="117"/>
+                                                                        <rect key="frame" x="-10" y="8" width="142.66666666666666" height="117"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbY-m5-Ezm">
-                                                                        <rect key="frame" x="149.33333333333331" y="8" width="129.33333333333331" height="117"/>
+                                                                        <rect key="frame" x="132.66666666666669" y="8" width="142.66666666666669" height="117"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     </view>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-vB-Ri2">
-                                                                        <rect key="frame" x="278.66666666666669" y="8" width="129.33333333333331" height="117"/>
+                                                                        <rect key="frame" x="275.33333333333331" y="8" width="142.66666666666669" height="117"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYP-rr-lVT">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="39"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="39"/>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSS-aG-Hrh">
-                                                                                <rect key="frame" x="0.0" y="39" width="129.33333333333334" height="39"/>
+                                                                                <rect key="frame" x="0.0" y="39" width="142.66666666666666" height="39"/>
                                                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbV-8c-de7">
-                                                                                <rect key="frame" x="0.0" y="78" width="129.33333333333334" height="39"/>
+                                                                                <rect key="frame" x="0.0" y="78" width="142.66666666666666" height="39"/>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             </view>
                                                                         </subviews>
                                                                     </stackView>
                                                                 </subviews>
-                                                                <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
+                                                                <edgeInsets key="layoutMargins" top="8" left="-10" bottom="8" right="10"/>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLt-pg-ycj">
                                                                 <rect key="frame" x="0.0" y="133" width="428" height="133"/>
@@ -285,7 +285,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="7kU-Ze-5vH" firstAttribute="centerY" secondItem="wLt-pg-ycj" secondAttribute="centerY" id="LBw-Tz-Ch6"/>
                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7kU-Ze-5vH" secondAttribute="trailing" constant="20" symbolic="YES" id="QlD-jC-3yA"/>
@@ -715,31 +715,37 @@
                                         <rect key="frame" x="0.0" y="100" width="428" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-la-Dcj">
-                                                <rect key="frame" x="0.0" y="0.0" width="428" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="428" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEk-fT-KVt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="Fast Food">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnFastFood:" destination="FXS-iM-Rpd" eventType="touchDown" id="eKN-JP-r8b"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6H-CC-QX8">
-                                                        <rect key="frame" x="107" y="0.0" width="107" height="50"/>
+                                                        <rect key="frame" x="107" y="0.0" width="107" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="Rice &amp; Curry">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnRiceCurry:" destination="FXS-iM-Rpd" eventType="touchDown" id="Mjw-MC-28c"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2W-ax-giH">
-                                                        <rect key="frame" x="214" y="0.0" width="107" height="50"/>
+                                                        <rect key="frame" x="214" y="0.0" width="107" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="Pastry">
                                                             <color key="titleColor" systemColor="labelColor"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="occ-hf-Z2n">
-                                                        <rect key="frame" x="321" y="0.0" width="107" height="50"/>
+                                                        <rect key="frame" x="321" y="0.0" width="107" height="30"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" title="Drinks">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -753,7 +759,6 @@
                                             <constraint firstItem="Jda-la-Dcj" firstAttribute="leading" secondItem="Uvr-I9-o2K" secondAttribute="leading" id="7FR-5q-PxW"/>
                                             <constraint firstAttribute="trailing" secondItem="Jda-la-Dcj" secondAttribute="trailing" id="9IQ-cy-SiZ"/>
                                             <constraint firstItem="Jda-la-Dcj" firstAttribute="top" secondItem="Uvr-I9-o2K" secondAttribute="top" id="MNl-MW-pDa"/>
-                                            <constraint firstAttribute="bottom" secondItem="Jda-la-Dcj" secondAttribute="bottom" id="MhB-YH-6mO"/>
                                             <constraint firstAttribute="height" constant="50" id="yxI-PB-IG5"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>

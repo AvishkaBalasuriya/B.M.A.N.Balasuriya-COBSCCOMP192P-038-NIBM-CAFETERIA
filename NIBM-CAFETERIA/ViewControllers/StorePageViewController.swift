@@ -34,9 +34,47 @@ class StorePageViewController: UIViewController {
     var firebaseFoodData=FirebaseService()
     let firestoreDataService = FirestoreDataService()
     
+    @IBAction func btnFastFood(_ sender: Any) {
+        self.firestoreDataService.fetchItems(categoryId: 1){
+            completion in
+            
+            if completion{
+                self.foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
+                self.storeTableView.isHidden = (ItemData.itemList.count==0 ? true:false)
+                self.setFloatingButton()
+                self.lblItemCount.text!=String(CartData.cartItemList.count)+" Items"
+                self.storeTableView.delegate=self
+                self.storeTableView.dataSource=self
+                self.cartTableView.delegate=self
+                self.cartTableView.dataSource=self
+                self.storeTableView.reloadData()
+            }
+            
+        }
+    }
+    
+    @IBAction func btnRiceCurry(_ sender: Any) {
+        self.firestoreDataService.fetchItems(categoryId: 2){
+            completion in
+            
+            if completion{
+                self.foodCartView.isHidden = (CartData.cartItemList.count==0 ? true:false)
+                self.storeTableView.isHidden = (ItemData.itemList.count==0 ? true:false)
+                self.setFloatingButton()
+                self.lblItemCount.text!=String(CartData.cartItemList.count)+" Items"
+                self.storeTableView.delegate=self
+                self.storeTableView.dataSource=self
+                self.cartTableView.delegate=self
+                self.cartTableView.dataSource=self
+                self.storeTableView.reloadData()
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.firestoreDataService.fetchItems(){
+        self.firestoreDataService.fetchItems(categoryId: 0){
             completion in
             
             if completion{
@@ -75,7 +113,7 @@ class StorePageViewController: UIViewController {
     
     @objc func tap(_ sender: Any) {
         let order = Order(orderId: generateOrderId(), userEmailAddress: UserData.emailAddress, items: CartData.cartItemList, total: generateOrderTotal(), status: 0)
-        OrderData.order=order
+        OrderData.orderList[order.orderId]=order
         
         self.firestoreDataService.addNewOrder(order: order){
             completion in
@@ -86,6 +124,7 @@ class StorePageViewController: UIViewController {
             }else{
                 self.showAlert(title: "Oops!", message: "Unable to place order. Please try again")
             }
+            
         }
     }
     @IBAction func stpQtyUpdate(_ sender: UIStepper) {
@@ -110,9 +149,12 @@ class StorePageViewController: UIViewController {
 
 extension StorePageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let foodViewController = storyboard?.instantiateViewController(withIdentifier:"FoodView") as? FoodViewController
-        foodViewController?.itemDetails = ItemData.itemList[indexPath.row]
-        self.navigationController?.pushViewController(foodViewController!, animated: true)
+        print(tableView)
+        if tableView == storeTableView{
+            let foodViewController = storyboard?.instantiateViewController(withIdentifier:"FoodView") as? FoodViewController
+            foodViewController?.itemDetails = ItemData.itemList[indexPath.row]
+            self.navigationController?.pushViewController(foodViewController!, animated: true)
+        }
     }
 }
 
@@ -130,7 +172,7 @@ extension StorePageViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == storeTableView{
             let cell:StoreTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tbvCell") as! StoreTableCustomCell
-            cell.imgFoodImage.image = UIImage(named: ItemData.itemList[indexPath.row].itemThumbnail)
+            cell.imgFoodImage.imageFromServerURL(urlString: ItemData.itemList[indexPath.row].itemThumbnail)
             cell.lblFoodName.text = ItemData.itemList[indexPath.row].itemName
             cell.lblFoodDescription.text = ItemData.itemList[indexPath.row].itemDescription
             cell.lblFoodPrice.text = String(format:"%.2f", ItemData.itemList[indexPath.row].itemPrice)
@@ -167,5 +209,26 @@ extension StorePageViewController:UITableViewDataSource{
             return cell
         }
         
+    }
+
+}
+
+extension UIImageView {
+    public func imageFromServerURL(urlString: String) {
+        self.image = nil
+        let urlStringNew = urlString.replacingOccurrences(of: " ", with: "%20")
+        URLSession.shared.dataTask(with: NSURL(string: urlStringNew)! as URL, completionHandler: { (data, response, error) -> Void in
+
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+
+        }).resume()
+
     }
 }

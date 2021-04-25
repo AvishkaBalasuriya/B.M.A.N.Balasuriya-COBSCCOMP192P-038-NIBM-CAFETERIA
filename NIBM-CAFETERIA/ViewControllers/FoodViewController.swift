@@ -20,7 +20,7 @@ class FoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setFloatingButton()
-        imgFoodImage.image = UIImage(named: itemDetails.itemThumbnail)
+        imgFoodImage.imageFromServerURL(urlString: itemDetails.itemThumbnail)
         lblFoodName.text = itemDetails.itemName
         
         if itemDetails.itemDiscount == 0.0{
@@ -29,8 +29,7 @@ class FoodViewController: UIViewController {
             lblFoodOffer.text=String(format:"%.2f", itemDetails.itemDiscount)
         }
         
-        
-        lblFoodPrice.text = String(format:"%.2f", itemDetails.itemPrice)
+        lblFoodPrice.text = "Rs: "+String(format:"%.2f", itemDetails.itemPrice)+" /="
         txtvFoodDescription.text = itemDetails.itemDescription
     }
     

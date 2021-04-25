@@ -5,12 +5,22 @@
 //  Created by Avishka Balasuriya on 2021-04-13.
 //
 
+/*
+ 0 - New
+ 1 - Preperation
+ 2 - Ready
+ 3 - Arriving
+ 4 - Done
+ 5 - Cancel
+ */
+
 import UIKit
 import FirebaseFirestore
 
 class FirestoreDataService: NSObject {
     
     let db = Firestore.firestore()
+    let notificationService = NotificationService()
     
     func addUserToFirestore(user:User,completion: @escaping (Bool)->()){
         db.collection("users").document(user.emailAddress).setData([
@@ -26,9 +36,9 @@ class FirestoreDataService: NSObject {
         }
     }
     
-    func fetchItems(completion: @escaping (Bool)->()) {
+    func fetchItems(categoryId:Int=0,completion: @escaping (Bool)->()) {
         var itemList:[Item]=[]
-        db.collection("items").getDocuments() { (querySnapshot, err) in
+        db.collection("items").whereField("categoryId", isEqualTo: categoryId).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 completion(false)
             } else {
@@ -66,7 +76,7 @@ class FirestoreDataService: NSObject {
         db.collection("orders").document(order.orderId).setData([
             "orderId":order.orderId,
             "userEmailAddress":order.userEmailAddress,
-            "items":order.items.map { $0.itemId },
+            "items":order.toAnyObject(),
             "total":order.total,
             "status":order.status
         ]){ err in
@@ -76,6 +86,60 @@ class FirestoreDataService: NSObject {
                 completion(201)
             }
         }
+    }
+    
+    func changeOrderStatus(orderId:String, status:Int, completion: @escaping (Int)->()){
+        db.collection("orders").document(orderId).updateData(["status":status]){
+            err in
+            if let err = err {
+                completion(500)
+            } else {
+                completion(204)
+            }
+        }
+    }
+    
+    func getAllOrders(completion: @escaping (Any)->()){
+        var orders:[Order] = []
+        print(UserData.emailAddress)
+        db.collection("orders").whereField("userEmailAddress", isEqualTo: UserData.emailAddress).addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                return
+            }
+            for document in querySnapshot!.documents {
+                let orderId:String=document.data()["orderId"] as! String
+                let userEmailAddress:String=document.data()["userEmailAddress"] as! String
+                var items:[CartItem]=[]
+                let total:Float=document.data()["total"] as! Float
+                let status:Int=document.data()["status"] as! Int
+                orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
+            }
+            populateOrderList(orders: orders)
+            completion(orders)
+        }
+    }
+    
+    func listenToOrderStatus(){
+        db.collection("orders").whereField("status", notIn: [0,3]).whereField("isRecieved", isEqualTo: false)
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+                var orders:[Order] = []
+                for document in querySnapshot!.documents{
+                    let orderId:String=document.data()["orderId"] as! String
+                    let userEmailAddress:String=document.data()["userEmailAddress"] as! String
+                    var items:[CartItem]=[]
+                    let total:Float=document.data()["total"] as! Float
+                    let status:Int=document.data()["status"] as! Int
+                    orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
+                }
+                for order in orders{
+                    self.notificationService.pushNotification(order: order)
+                }
+            }
     }
 
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class StoreTabBarController: UITabBarController {
 
+    let firestoreDataService=FirestoreDataService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import CoreLocation
 
 class FirebaseService: NSObject {
     
@@ -16,6 +18,7 @@ class FirebaseService: NSObject {
         if (user.emailAddress != "" && user.mobileNumber != "" && user.password != ""){
             Auth.auth().createUser(withEmail: user.emailAddress, password: user.password) { (response, error) in
                 if error != nil {
+                    print(error)
                     if let errCode = FirebaseAuth.AuthErrorCode(rawValue: error!._code) {
                         switch errCode {
                             case .emailAlreadyInUse:
@@ -90,6 +93,17 @@ class FirebaseService: NSObject {
         }else{
             result(400)
         }
+    }
+    
+    func listenToResturentLiveLocation(){
+        let ref = Database.database().reference()
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            let latitude =  postDict["RESTURENTLOCATION"]?["LATITUDE"] as! Double
+            let longitude = postDict["RESTURENTLOCATION"]?["LONGITUDE"] as! Double
+            RESTURENTLOCATION.latitude=latitude
+            RESTURENTLOCATION.longitude=longitude
+        })
     }
     
 }
