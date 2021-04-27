@@ -14,9 +14,119 @@
             filePath = "NIBM-CAFETERIA/ViewControllers/StorePageViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5DB8AEEB-4C38-4994-9C32-182BBE9D83B0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIBM-CAFETERIA/Services/FirebaseService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "listenToResturentLiveLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AD48FD4-9EAF-42B7-9C59-DB99EAE9963B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIBM-CAFETERIA/Models/OrderModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "Order"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "7AD48FD4-9EAF-42B7-9C59-DB99EAE9963B - 412ac3619cf6d165"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NIBM_CAFETERIA.Order.status.getter : Swift.Int"
+                  moduleName = "NIBM-CAFETERIA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avishkabalasuriya/Desktop/Self%20Study/IOS/NIBM-CAFETERIA/NIBM-CAFETERIA/Models/OrderModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "7AD48FD4-9EAF-42B7-9C59-DB99EAE9963B - 3406a81c656aed71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NIBM_CAFETERIA.Order.status.setter : Swift.Int"
+                  moduleName = "NIBM-CAFETERIA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avishkabalasuriya/Desktop/Self%20Study/IOS/NIBM-CAFETERIA/NIBM-CAFETERIA/Models/OrderModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "7AD48FD4-9EAF-42B7-9C59-DB99EAE9963B - 8150f0cde1b43c71"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NIBM_CAFETERIA.Order.status.modify : Swift.Int"
+                  moduleName = "NIBM-CAFETERIA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avishkabalasuriya/Desktop/Self%20Study/IOS/NIBM-CAFETERIA/NIBM-CAFETERIA/Models/OrderModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "7AD48FD4-9EAF-42B7-9C59-DB99EAE9963B - d1450ec475cc9071"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NIBM_CAFETERIA.Order.status.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "NIBM-CAFETERIA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/avishkabalasuriya/Desktop/Self%20Study/IOS/NIBM-CAFETERIA/NIBM-CAFETERIA/Models/OrderModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B245840-6FAC-4ADC-B9C9-251A6DA017A4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NIBM-CAFETERIA/Services/FirestoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "addNewOrder(order:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

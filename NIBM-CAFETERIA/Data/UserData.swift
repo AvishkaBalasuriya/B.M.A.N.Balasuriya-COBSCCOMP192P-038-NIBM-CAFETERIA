@@ -7,8 +7,6 @@
 
 import Foundation
 
-var firebaseUserData=FirebaseService()
-
 struct UserData {
     static var emailAddress:String = ""
     static var mobileNumber:String = ""

@@ -42,9 +42,13 @@ class LocationService: NSObject {
     }
     
     func calculateDistance(gpsLocation:CLLocation,resturentLocation:CLLocation){
+        print("Getting user location")
         let distance=gpsLocation.distance(from: resturentLocation) / 1000
+        print(distance)
         if distance<=10{
+            print("Customer is close")
             let readyOrders = OrderData.orderList.filter{ $0.value.status == 2 }
+            print(OrderData.orderList)
             for order in readyOrders{
                 print("We have orders with status 2")
                 self.firestoreDataService.changeOrderStatus(orderId: order.key, status: 3){

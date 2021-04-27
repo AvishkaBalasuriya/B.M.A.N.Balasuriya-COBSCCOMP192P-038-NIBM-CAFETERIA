@@ -15,4 +15,5 @@ struct ItemData {
 
 func populateItemList(items:[Item]){
     ItemData.itemList=items
+    print("Items populated")
 }

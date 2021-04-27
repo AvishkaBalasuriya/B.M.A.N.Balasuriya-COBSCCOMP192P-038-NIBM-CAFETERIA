@@ -35,7 +35,7 @@ class StorePageViewController: UIViewController {
     let firestoreDataService = FirestoreDataService()
     
     @IBAction func btnFastFood(_ sender: Any) {
-        self.firestoreDataService.fetchItems(categoryId: 1){
+        self.firestoreDataService.fetchItems(categoryId: 0){
             completion in
             
             if completion{
@@ -87,6 +87,9 @@ class StorePageViewController: UIViewController {
                 self.cartTableView.delegate=self
                 self.cartTableView.dataSource=self
                 self.storeTableView.reloadData()
+                print(ItemData.itemList)
+            }else{
+                print("#######")
             }
             
         }

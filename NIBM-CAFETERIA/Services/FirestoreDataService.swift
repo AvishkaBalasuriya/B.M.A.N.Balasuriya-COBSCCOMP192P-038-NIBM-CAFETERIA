@@ -20,7 +20,6 @@ import FirebaseFirestore
 class FirestoreDataService: NSObject {
     
     let db = Firestore.firestore()
-    let notificationService = NotificationService()
     
     func addUserToFirestore(user:User,completion: @escaping (Bool)->()){
         db.collection("users").document(user.emailAddress).setData([
@@ -58,14 +57,18 @@ class FirestoreDataService: NSObject {
         }
     }
     
-    func fetchUser(user:User,completion: @escaping (Any)->()){
+    func fetchUser(user:User,completion: @escaping (Int)->()){
         db.collection("users").document(user.emailAddress).getDocument { (document, error) in
             if let document = document, document.exists {
                 let user = User()
                 user.emailAddress=document.get("emailAddress") as! String
                 user.mobileNumber=document.get("mobileNumber") as! String
                 user.type=document.get("type") as! Int
-                completion(user)
+                
+                UserData.emailAddress=user.emailAddress
+                UserData.mobileNumber=user.mobileNumber
+                
+                completion(200)
             } else {
                 completion(404)
             }
@@ -83,6 +86,7 @@ class FirestoreDataService: NSObject {
             if err != nil{
                 completion(500)
             } else {
+                FirebaseService().addNewOrderStatus(order: order)
                 completion(201)
             }
         }
@@ -94,6 +98,7 @@ class FirestoreDataService: NSObject {
             if let err = err {
                 completion(500)
             } else {
+                FirebaseService().updateOrderStatus(orderId: orderId, status: status)
                 completion(204)
             }
         }
@@ -120,26 +125,26 @@ class FirestoreDataService: NSObject {
         }
     }
     
-    func listenToOrderStatus(){
-        db.collection("orders").whereField("status", notIn: [0,3]).whereField("isRecieved", isEqualTo: false)
-            .addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
-                }
-                var orders:[Order] = []
-                for document in querySnapshot!.documents{
-                    let orderId:String=document.data()["orderId"] as! String
-                    let userEmailAddress:String=document.data()["userEmailAddress"] as! String
-                    var items:[CartItem]=[]
-                    let total:Float=document.data()["total"] as! Float
-                    let status:Int=document.data()["status"] as! Int
-                    orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
-                }
-                for order in orders{
-                    self.notificationService.pushNotification(order: order)
-                }
-            }
-    }
+//    func listenToOrderStatus(){
+//        db.collection("orders").document().whereField("", in: <#T##[Any]#>).whereField("status", notIn: [0,3])
+//            .addSnapshotListener { querySnapshot, error in
+//                guard let documents = querySnapshot?.documents else {
+//                    print("Error fetching documents: \(error!)")
+//                    return
+//                }
+//                var orders:[Order] = []
+//                for document in querySnapshot!.documents{
+//                    let orderId:String=document.data()["orderId"] as! String
+//                    let userEmailAddress:String=document.data()["userEmailAddress"] as! String
+//                    var items:[CartItem]=[]
+//                    let total:Float=document.data()["total"] as! Float
+//                    let status:Int=document.data()["status"] as! Int
+//                    orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
+//                }
+//                for order in orders{
+//                    self.notificationService.pushNotification(order: order)
+//                }
+//            }
+//    }
 
 }

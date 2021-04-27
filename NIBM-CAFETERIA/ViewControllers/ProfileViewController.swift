@@ -8,12 +8,12 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblMobileNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblEmail.text=UserData.emailAddress
+        lblUsername.text=UserData.emailAddress
         lblMobileNumber.text=UserData.mobileNumber
     }
 }

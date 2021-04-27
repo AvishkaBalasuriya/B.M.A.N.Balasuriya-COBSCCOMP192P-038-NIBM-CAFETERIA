@@ -21,5 +21,4 @@ class CartItem: NSObject {
         self.itemPrice=itemPrice
         self.totalPrice=totalPrice
     }
-    
 }

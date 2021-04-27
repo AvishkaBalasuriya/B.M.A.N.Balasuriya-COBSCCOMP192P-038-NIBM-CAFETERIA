@@ -26,20 +26,26 @@ class LoginViewController: UIViewController {
         self.firebaseService.loginUser(user: user) {
             result in
             if result == 200{
-                UserData.emailAddress=user.emailAddress
-                
-                let storeTabBarController = self.storyboard?.instantiateViewController(withIdentifier:"StoreTabBarController") as? StoreTabBarController
-                self.navigationController?.setNavigationBarHidden(true, animated: false)
-                self.navigationItem.leftBarButtonItem=nil
-                self.navigationItem.hidesBackButton=true
-                self.navigationController?.pushViewController(storeTabBarController!,animated: true)
-                
+                FirestoreDataService().fetchUser(user: user){
+                    completion in
+                    if completion == 200{
+                        FirebaseService().listenToOrderStatus()
+                        
+                        let storeTabBarController = self.storyboard?.instantiateViewController(withIdentifier:"StoreTabBarController") as? StoreTabBarController
+                        self.navigationController?.setNavigationBarHidden(true, animated: false)
+                        self.navigationItem.leftBarButtonItem=nil
+                        self.navigationItem.hidesBackButton=true
+                        self.navigationController?.pushViewController(storeTabBarController!,animated: true)
+                    }else{
+                        self.showAlert(title: "Oops!", message: "Unable to get user data")
+                    }
+                }
             }else if(result==400){
                 self.showAlert(title: "Oops!", message: "Email address and password is required")
             }else if(result==401){
                 self.showAlert(title: "Oops!", message: "Username or password is incorrect")
             }else if(result==500){
-                self.showAlert(title: "Oops!", message: "An error occures while registering")
+                self.showAlert(title: "Oops!", message: "An error occures while logging")
             }
         }
     }

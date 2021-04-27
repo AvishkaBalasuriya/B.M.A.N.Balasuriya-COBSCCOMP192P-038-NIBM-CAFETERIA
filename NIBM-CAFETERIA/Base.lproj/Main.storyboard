@@ -373,23 +373,37 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HC7-mL-Ldd">
                                                             <rect key="frame" x="0.0" y="0.0" width="428" height="100"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GTB-Tl-Xj2">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GTB-Tl-Xj2">
                                                                     <rect key="frame" x="20" y="8" width="63" height="84"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="lblOrderId" text="Order id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1Q-Va-Wgh">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="63" height="84"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="63" height="53.666666666666664"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="lblOrderIdData" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-dF-mhV" userLabel="lblOrderIdData">
+                                                                            <rect key="frame" x="0.0" y="63.666666666666679" width="63" height="20.333333333333336"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20.333333333333336" id="tG0-ms-BvZ"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="lblOrderDetails" text="13 min left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv0-lg-IlU">
-                                                                    <rect key="frame" x="329.33333333333331" y="8" width="78.666666666666686" height="84"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                    <color key="textColor" systemColor="systemGray2Color"/>
-                                                                    <color key="highlightedColor" systemColor="opaqueSeparatorColor"/>
-                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gtX-0s-DRn">
+                                                                    <rect key="frame" x="345" y="8" width="63" height="84"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="lblOrderStatus" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gll-Cy-yKF" userLabel="lblOrderStatus">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="63" height="84"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                                                            <color key="highlightedColor" systemColor="opaqueSeparatorColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="umY-tG-lN8"/>
@@ -405,8 +419,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="lblOrderId" destination="m1Q-Va-Wgh" id="XCk-1g-TDM"/>
-                                                    <outlet property="lblOrderStatus" destination="yv0-lg-IlU" id="hiP-YU-m4T"/>
+                                                    <outlet property="lblOrderId" destination="qUd-dF-mhV" id="EEC-nC-bfu"/>
+                                                    <outlet property="lblOrderStatus" destination="gll-Cy-yKF" id="hvP-i1-2GW"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -447,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hp3-I6-NTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4008" y="853"/>
+            <point key="canvasLocation" x="4007.9439252336447" y="852.69978401727872"/>
         </scene>
         <!--Account-->
         <scene sceneID="fuA-CT-Pjt">
@@ -601,8 +615,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="ZcY-Vl-tw1"/>
                     <connections>
-                        <outlet property="lblEmail" destination="w00-Ba-rMe" id="DjI-ov-E5s"/>
                         <outlet property="lblMobileNumber" destination="w00-Ba-rMe" id="bqK-I1-MuM"/>
+                        <outlet property="lblUsername" destination="JGz-wv-A84" id="qYT-AY-cw7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvG-D8-gHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1250,7 +1264,7 @@
         <scene sceneID="U9T-FI-6U7">
             <objects>
                 <navigationController id="yjl-9X-kw0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store" id="BHA-rd-pvb"/>
+                    <tabBarItem key="tabBarItem" title="Store" selectedImage="cart.circle.fill" catalog="system" id="BHA-rd-pvb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IL0-vh-HiR">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1267,6 +1281,7 @@
     <resources>
         <image name="Food" width="78.666664123535156" height="71.333335876464844"/>
         <image name="Logo" width="32" height="32"/>
+        <image name="cart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.badge.plus.fill" catalog="system" width="128" height="124"/>
         <namedColor name="AccentColor">

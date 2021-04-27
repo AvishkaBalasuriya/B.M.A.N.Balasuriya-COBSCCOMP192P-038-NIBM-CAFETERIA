@@ -9,7 +9,6 @@ import UIKit
 
 
 class OrderTableCustomCell: UITableViewCell {
-    
     @IBOutlet weak var lblOrderId: UILabel!
     @IBOutlet weak var lblOrderStatus: UILabel!
 }
@@ -22,7 +21,6 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Loaded")
         self.firestoreDataService.getAllOrders(){
             completion in
             
@@ -59,8 +57,25 @@ extension OrderViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:OrderTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tblOrderData") as! OrderTableCustomCell
-        cell.lblOrderId.text = "Order ID "+Array(OrderData.orderList)[indexPath.row].value.orderId
-        cell.lblOrderStatus.text = String(Array(OrderData.orderList)[indexPath.row].value.status)
+        cell.lblOrderId.text = Array(OrderData.orderList)[indexPath.row].value.orderId
+        cell.lblOrderStatus.text = self.getStatusName(status: Array(OrderData.orderList)[indexPath.row].value.status)
         return cell
+    }
+    
+    func getStatusName(status:Int)->String{
+        if status==0{
+            return "Pending"
+        }else if status==1{
+            return "Preparing"
+        }else if status==2{
+            return "Ready"
+        }else if status==3{
+            return "Ready"
+        }else if status==4{
+            return "Completed"
+        }else if status==5{
+            return "Rejected"
+        }
+        return ""
     }
 }
