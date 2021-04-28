@@ -13,13 +13,15 @@ class Order: NSObject {
     var items:[CartItem]
     var total:Float
     var status:Int
+    var timestamp:Date
     
-    init(orderId:String,userEmailAddress:String,items:[CartItem],total:Float,status:Int) {
+    init(orderId:String,userEmailAddress:String,items:[CartItem],total:Float,status:Int,timestamp:Date=Date()) {
         self.orderId=orderId
         self.userEmailAddress=userEmailAddress
         self.items=items
         self.total=total
         self.status=status
+        self.timestamp=timestamp
     }
     
     override init(){
@@ -28,6 +30,7 @@ class Order: NSObject {
         self.items=[]
         self.status=0
         self.total=0.0
+        self.timestamp=Date()
     }
     
     func toAnyObject() -> Any {

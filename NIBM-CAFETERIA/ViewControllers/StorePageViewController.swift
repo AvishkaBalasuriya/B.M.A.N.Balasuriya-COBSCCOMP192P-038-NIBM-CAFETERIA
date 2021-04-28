@@ -35,7 +35,7 @@ class StorePageViewController: UIViewController {
     let firestoreDataService = FirestoreDataService()
     
     @IBAction func btnFastFood(_ sender: Any) {
-        self.firestoreDataService.fetchItems(categoryId: 0){
+        self.firestoreDataService.fetchItems(category: "Burgers"){
             completion in
             
             if completion{
@@ -54,7 +54,7 @@ class StorePageViewController: UIViewController {
     }
     
     @IBAction func btnRiceCurry(_ sender: Any) {
-        self.firestoreDataService.fetchItems(categoryId: 2){
+        self.firestoreDataService.fetchItems(category: "Srilankan"){
             completion in
             
             if completion{
@@ -74,7 +74,7 @@ class StorePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.firestoreDataService.fetchItems(categoryId: 0){
+        self.firestoreDataService.fetchItems(category: "Burgers"){
             completion in
             
             if completion{
@@ -130,6 +130,7 @@ class StorePageViewController: UIViewController {
             
         }
     }
+    
     @IBAction func stpQtyUpdate(_ sender: UIStepper) {
         let itemId = sender.accessibilityIdentifier
         for item in CartData.cartItemList{
@@ -152,7 +153,6 @@ class StorePageViewController: UIViewController {
 
 extension StorePageViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(tableView)
         if tableView == storeTableView{
             let foodViewController = storyboard?.instantiateViewController(withIdentifier:"FoodView") as? FoodViewController
             foodViewController?.itemDetails = ItemData.itemList[indexPath.row]

@@ -20,6 +20,7 @@ func populateOrderList(orders:[Order]){
 }
 
 func generateOrderId()->String{
-    let uuid = NSUUID().uuidString
+    let uuid = NSUUID().uuidString.replacingOccurrences(of:
+        "-", with: "")
     return uuid
 }

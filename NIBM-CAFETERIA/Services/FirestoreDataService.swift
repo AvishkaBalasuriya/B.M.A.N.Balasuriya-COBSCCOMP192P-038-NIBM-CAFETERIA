@@ -35,9 +35,9 @@ class FirestoreDataService: NSObject {
         }
     }
     
-    func fetchItems(categoryId:Int=0,completion: @escaping (Bool)->()) {
+    func fetchItems(category:String="Other",completion: @escaping (Bool)->()) {
         var itemList:[Item]=[]
-        db.collection("items").whereField("categoryId", isEqualTo: categoryId).getDocuments() { (querySnapshot, err) in
+        db.collection("items").whereField("category", isEqualTo: category).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 completion(false)
             } else {
@@ -49,7 +49,8 @@ class FirestoreDataService: NSObject {
                     let itemPrice=document.data()["itemPrice"] as! Float
                     let itemDiscount=document.data()["itemDiscount"] as! Float
                     let isAvailable=document.data()["isAvailable"] as! Bool
-                    itemList.append(Item(itemId: itemId, itemName: itemName, itemThumbnail: itemThumbnail, itemDescription: itemDescription, itemPrice: itemPrice,itemDiscount: itemDiscount,isAvailable: isAvailable))
+                    let category=document.data()["category"] as! String
+                    itemList.append(Item(itemId: itemId, itemName: itemName, itemThumbnail: itemThumbnail, itemDescription: itemDescription, itemPrice: itemPrice,itemDiscount: itemDiscount,isAvailable: isAvailable,category: category))
                 }
                 populateItemList(items: itemList)
                 completion(true)
@@ -81,7 +82,8 @@ class FirestoreDataService: NSObject {
             "userEmailAddress":order.userEmailAddress,
             "items":order.toAnyObject(),
             "total":order.total,
-            "status":order.status
+            "status":order.status,
+            "timestamp":order.timestamp
         ]){ err in
             if err != nil{
                 completion(500)
@@ -105,9 +107,8 @@ class FirestoreDataService: NSObject {
     }
     
     func getAllOrders(completion: @escaping (Any)->()){
-        var orders:[Order] = []
-        print(UserData.emailAddress)
         db.collection("orders").whereField("userEmailAddress", isEqualTo: UserData.emailAddress).addSnapshotListener { querySnapshot, error in
+            var orders:[Order] = []
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
                 return
@@ -118,33 +119,13 @@ class FirestoreDataService: NSObject {
                 var items:[CartItem]=[]
                 let total:Float=document.data()["total"] as! Float
                 let status:Int=document.data()["status"] as! Int
-                orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
+                let timestamp:Timestamp=document.data()["timestamp"] as! Timestamp
+                let order = Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status,timestamp: timestamp.dateValue())
+                orders.append(order)
             }
             populateOrderList(orders: orders)
             completion(orders)
         }
     }
-    
-//    func listenToOrderStatus(){
-//        db.collection("orders").document().whereField("", in: <#T##[Any]#>).whereField("status", notIn: [0,3])
-//            .addSnapshotListener { querySnapshot, error in
-//                guard let documents = querySnapshot?.documents else {
-//                    print("Error fetching documents: \(error!)")
-//                    return
-//                }
-//                var orders:[Order] = []
-//                for document in querySnapshot!.documents{
-//                    let orderId:String=document.data()["orderId"] as! String
-//                    let userEmailAddress:String=document.data()["userEmailAddress"] as! String
-//                    var items:[CartItem]=[]
-//                    let total:Float=document.data()["total"] as! Float
-//                    let status:Int=document.data()["status"] as! Int
-//                    orders.append(Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status))
-//                }
-//                for order in orders{
-//                    self.notificationService.pushNotification(order: order)
-//                }
-//            }
-//    }
 
 }
