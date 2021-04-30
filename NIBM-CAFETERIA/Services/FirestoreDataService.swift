@@ -83,7 +83,8 @@ class FirestoreDataService: NSObject {
             "items":order.toAnyObject(),
             "total":order.total,
             "status":order.status,
-            "timestamp":order.timestamp
+            "timestamp":order.timestamp,
+            "userId":order.userId
         ]){ err in
             if err != nil{
                 completion(500)
@@ -120,7 +121,8 @@ class FirestoreDataService: NSObject {
                 let total:Float=document.data()["total"] as! Float
                 let status:Int=document.data()["status"] as! Int
                 let timestamp:Timestamp=document.data()["timestamp"] as! Timestamp
-                let order = Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status,timestamp: timestamp.dateValue())
+                let userId:String=document.data()["userId"] as! String
+                let order = Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status,userId: userId, timestamp: timestamp.dateValue())
                 orders.append(order)
             }
             populateOrderList(orders: orders)
@@ -128,4 +130,21 @@ class FirestoreDataService: NSObject {
         }
     }
 
+    func getAllCategories(completion: @escaping (Any)->()){
+        db.collection("categories").addSnapshotListener {
+            querySnapshot, error in
+            if let err = error {
+                completion(500)
+            }else{
+                var categories:[Category]=[]
+                for document in querySnapshot!.documents {
+                    let categoryId=document.data()["categoryId"] as! String
+                    let categoryName=document.data()["categoryName"] as! String
+                    categories.append(Category(categoryId: categoryId, categoryName: categoryName))
+                }
+                populateCategoryList(categories: categories)
+                completion(categories)
+            }
+        }
+    }
 }

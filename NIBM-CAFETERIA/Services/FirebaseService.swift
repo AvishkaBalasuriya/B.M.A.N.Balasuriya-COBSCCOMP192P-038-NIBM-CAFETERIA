@@ -33,6 +33,9 @@ class FirebaseService: NSObject {
                     self.firestoreDataService.addUserToFirestore(user: user){
                         completion in
                         if completion{
+                            user.uuid=(response?.user.uid)!
+                            setUserData(user: user)
+                            UserDefaults.standard.set(true, forKey: "isLogged")
                             result(201)
                         }else{
                             result(500)
@@ -64,6 +67,8 @@ class FirebaseService: NSObject {
                         result(500)
                     }
                 }else {
+                    UserDefaults.standard.set(true, forKey: "isLogged")
+                    UserData.uuid=(response?.user.uid)!
                     result(200)
                 }
             }
@@ -87,6 +92,7 @@ class FirebaseService: NSObject {
                         result(500)
                     }
                 }else {
+                    UserDefaults.standard.set(false, forKey: "isLogged")
                     result(200)
                 }
             }
@@ -107,7 +113,7 @@ class FirebaseService: NSObject {
     }
     
     func listenToOrderStatus(){
-        let ref = Database.database().reference().child(UserData.mobileNumber)
+        let ref = Database.database().reference().child("orders").child(UserData.uuid)
         ref.observe(DataEventType.value, with: { (snapshot) in
             
             if !snapshot.exists() {
@@ -140,19 +146,19 @@ class FirebaseService: NSObject {
         statusData.isRecieved=false
         statusData.orderId=order.orderId
         var orderData = statusData.asDictionary
-        let ref = Database.database().reference().child(UserData.mobileNumber).child(order.orderId)
+        let ref = Database.database().reference().child("orders").child(UserData.uuid).child(order.orderId)
         ref.setValue(orderData)
     }
     
     func updateOrderStatus(orderId:String,status:Int){
-        let ref = Database.database().reference().child(UserData.mobileNumber).child(orderId)
+        let ref = Database.database().reference().child("orders").child(UserData.uuid).child(orderId)
         ref.updateChildValues(["status":status,"isRecieved":false])
     }
     
     func markOrderAsRecieved(orderStatusData:StatusDataModel,key:String){
         orderStatusData.isRecieved=true
         print("Updating order status")
-        let ref = Database.database().reference().child(UserData.mobileNumber).child(key).setValue(orderStatusData.asDictionary)
+        let ref = Database.database().reference().child("orders").child(UserData.uuid).child(key).setValue(orderStatusData.asDictionary)
     }
     
 }

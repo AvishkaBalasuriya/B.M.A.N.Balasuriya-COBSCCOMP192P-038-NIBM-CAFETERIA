@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationService().configure(context: self, application: application)
         LocationService().configure(context: self , locationManager: self.locationManager)
         
-//        FirestoreDataService().listenToOrderStatus()
         FirebaseService().listenToResturentLiveLocation()
         
         return true

@@ -47,6 +47,10 @@ class LocationService: NSObject {
         print(distance)
         if distance<=10{
             print("Customer is close")
+            for (key,order) in OrderData.orderList{
+                print(order)
+                print(order.status)
+            }
             let readyOrders = OrderData.orderList.filter{ $0.value.status == 2 }
             print(OrderData.orderList)
             for order in readyOrders{

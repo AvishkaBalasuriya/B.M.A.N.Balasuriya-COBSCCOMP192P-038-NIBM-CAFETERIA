@@ -51,12 +51,6 @@ class ForgetPasswordViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func showAlert(title:String,message:String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func addTapFunctions(){
         let loginTap = UITapGestureRecognizer(target: self, action: #selector(ForgetPasswordViewController.loginTapFunction))
         lblLoginTap.isUserInteractionEnabled = true
