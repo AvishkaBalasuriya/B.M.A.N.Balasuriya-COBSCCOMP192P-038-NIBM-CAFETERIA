@@ -37,20 +37,22 @@ class FirestoreDataService: NSObject {
     
     func fetchItems(category:String="Other",completion: @escaping (Bool)->()) {
         var itemList:[Item]=[]
-        db.collection("items").whereField("category", isEqualTo: category).whereField("isAvailable", isEqualTo: true).getDocuments() { (querySnapshot, err) in
+        db.collection("items").whereField("category", isEqualTo: category).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 completion(false)
             } else {
                 for document in querySnapshot!.documents {
-                    let itemId=document.data()["itemId"] as! String
-                    let itemName=document.data()["itemName"] as! String
-                    let itemDescription=document.data()["itemDescription"] as! String
-                    let itemThumbnail=document.data()["itemThumbnail"] as! String
-                    let itemPrice=document.data()["itemPrice"] as! Float
-                    let itemDiscount=document.data()["itemDiscount"] as! Float
-                    let isAvailable=document.data()["isAvailable"] as! Bool
-                    let category=document.data()["category"] as! String
-                    itemList.append(Item(itemId: itemId, itemName: itemName, itemThumbnail: itemThumbnail, itemDescription: itemDescription, itemPrice: itemPrice,itemDiscount: itemDiscount,isAvailable: isAvailable,category: category))
+                    if document.data()["isAvailable"] as! Bool{
+                        let itemId=document.data()["itemId"] as! String
+                        let itemName=document.data()["itemName"] as! String
+                        let itemDescription=document.data()["itemDescription"] as! String
+                        let itemThumbnail=document.data()["itemThumbnail"] as! String
+                        let itemPrice=document.data()["itemPrice"] as! Float
+                        let itemDiscount=document.data()["itemDiscount"] as! Float
+                        let isAvailable=document.data()["isAvailable"] as! Bool
+                        let category=document.data()["category"] as! String
+                        itemList.append(Item(itemId: itemId, itemName: itemName, itemThumbnail: itemThumbnail, itemDescription: itemDescription, itemPrice: itemPrice,itemDiscount: itemDiscount,isAvailable: isAvailable,category: category))
+                    }
                 }
                 populateItemList(items: itemList)
                 completion(true)
