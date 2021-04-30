@@ -20,18 +20,17 @@ class OrderViewController: UIViewController {
     let firestoreDataService = FirestoreDataService()
     
     override func viewDidLoad() {
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         self.firestoreDataService.getAllOrders(){
             completion in
-            
             self.tableOrderView.delegate=self
             self.tableOrderView.dataSource=self
             self.tableOrderView.isHidden = (OrderData.orderList.count == 0 ?true:false)
             self.noDataView.isHidden = (OrderData.orderList.count == 0 ?false:true)
             self.tableOrderView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
 }
 
@@ -51,7 +50,7 @@ extension OrderViewController:UITableViewDataSource{
         } else {
             self.tableOrderView.restore()
         }
-        return OrderData.orderList.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

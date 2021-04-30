@@ -29,8 +29,6 @@ class LoginViewController: UIViewController {
                 FirestoreDataService().fetchUser(user: user){
                     completion in
                     if completion == 200{
-                        FirebaseService().listenToOrderStatus()
-                        
                         let storeTabBarController = self.storyboard?.instantiateViewController(withIdentifier:"StoreTabBarController") as? StoreTabBarController
                         self.navigationController?.setNavigationBarHidden(true, animated: false)
                         self.navigationItem.leftBarButtonItem=nil
@@ -65,7 +63,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E2DFA2C263BE8D000D4A9F3 /* BillOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DFA2B263BE8D000D4A9F3 /* BillOrderData.swift */; };
 		2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */; };
 		2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */; };
 		2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD325EE4F8A00FB5AAD /* RegisterViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E2DFA2B263BE8D000D4A9F3 /* BillOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillOrderData.swift; sourceTree = "<group>"; };
 		2E43FCCC25EE4F8A00FB5AAD /* NIBM-CAFETERIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM-CAFETERIA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				2EAFBA9625F16A41001D7355 /* UserData.swift */,
 				2ECEBD702625B73600AB8B40 /* ResturentLocationData.swift */,
 				2E8CE89D263BC52A003C0A7D /* CategoryData.swift */,
+				2E2DFA2B263BE8D000D4A9F3 /* BillOrderData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				2EAFBAB325F17E0E001D7355 /* ProfileViewController.swift in Sources */,
 				2ECEBD712625B73600AB8B40 /* ResturentLocationData.swift in Sources */,
 				2ECEBD3F26259BA600AB8B40 /* LocationService.swift in Sources */,
+				2E2DFA2C263BE8D000D4A9F3 /* BillOrderData.swift in Sources */,
 				2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */,
 				2E43FD0D25EE6C5500FB5AAD /* FirebaseService.swift in Sources */,
 				2EAFBAB025F16D20001D7355 /* UserModel.swift in Sources */,
