@@ -129,6 +129,9 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let orderDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier:"OrderDetailsViewController") as? OrderDetailsViewController
+        orderDetailsViewController?.orderDetails = objectsBillArray[indexPath.section].sectionObjects[indexPath.row] as? Order
+        self.navigationController?.pushViewController(orderDetailsViewController!, animated: true)
     }
 }
 

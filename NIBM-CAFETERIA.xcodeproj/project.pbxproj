@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E2DFA2C263BE8D000D4A9F3 /* BillOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DFA2B263BE8D000D4A9F3 /* BillOrderData.swift */; };
+		2E2DFA31263C332600D4A9F3 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DFA30263C332600D4A9F3 /* OrderDetailsViewController.swift */; };
 		2E43FCD025EE4F8A00FB5AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */; };
 		2E43FCD225EE4F8A00FB5AAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */; };
 		2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43FCD325EE4F8A00FB5AAD /* RegisterViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		2E2DFA2B263BE8D000D4A9F3 /* BillOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillOrderData.swift; sourceTree = "<group>"; };
+		2E2DFA30263C332600D4A9F3 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		2E43FCCC25EE4F8A00FB5AAD /* NIBM-CAFETERIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM-CAFETERIA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E43FCCF25EE4F8A00FB5AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E43FCD125EE4F8A00FB5AAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				2EAFBAB225F17E0E001D7355 /* ProfileViewController.swift */,
 				2EA6306C25F1F3BD00CB490C /* StoreTabBarController.swift */,
 				2E8CE897263BC2DC003C0A7D /* InitialViewController.swift */,
+				2E2DFA30263C332600D4A9F3 /* OrderDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				2E8CE89E263BC52A003C0A7D /* CategoryData.swift in Sources */,
 				2EF2D52625F0740300633C6E /* StorePageViewController.swift in Sources */,
 				2EAFBA7625F120C6001D7355 /* FoodData.swift in Sources */,
+				2E2DFA31263C332600D4A9F3 /* OrderDetailsViewController.swift in Sources */,
 				2E43FCD425EE4F8A00FB5AAD /* RegisterViewController.swift in Sources */,
 				2E43FCF225EE650D00FB5AAD /* ForgetPasswordViewController.swift in Sources */,
 				2EAFBA7A25F12126001D7355 /* CartData.swift in Sources */,

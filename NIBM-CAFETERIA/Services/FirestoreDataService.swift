@@ -115,14 +115,25 @@ class FirestoreDataService: NSObject {
             }
             var orders:[Order] = []
             for document in querySnapshot!.documents {
+                var cart:[CartItem]=[]
                 let orderId:String=document.data()["orderId"] as! String
                 let userEmailAddress:String=document.data()["userEmailAddress"] as! String
-                var items:[CartItem]=[]
+                let items = document.data()["items"] as! [Any]
+                for item in items{
+                    let itemData = item as! [String:Any]
+                    let itemId:String = itemData["itemId"] as! String
+                    let itemName:String = itemData["itemName"] as! String
+                    let itemQty:Int = itemData["itemQty"] as! Int
+                    let itemPrice:Float = itemData["itemPrice"] as! Float
+                    let totalPrice:Float = itemData["totalPrice"] as! Float
+                    let cartItem = CartItem(itemId: itemId, itemName: itemName, itemQty: itemQty, itemPrice: itemPrice, totalPrice: totalPrice)
+                    cart.append(cartItem)
+                }
                 let total:Float=document.data()["total"] as! Float
                 let status:Int=document.data()["status"] as! Int
                 let timestamp:Timestamp=document.data()["timestamp"] as! Timestamp
                 let userId:String=document.data()["userId"] as! String
-                let order = Order(orderId: orderId, userEmailAddress: userEmailAddress, items: items, total: total, status: status,userId: userId, timestamp: timestamp.dateValue())
+                let order = Order(orderId: orderId, userEmailAddress: userEmailAddress, items: cart, total: total, status: status,userId: userId, timestamp: timestamp.dateValue())
                 orders.append(order)
             }
             populateOrderList(orders: orders)

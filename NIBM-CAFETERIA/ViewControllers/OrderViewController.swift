@@ -36,6 +36,10 @@ class OrderViewController: UIViewController {
 
 extension OrderViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let orderDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier:"OrderDetailsViewController") as? OrderDetailsViewController
+        orderDetailsViewController?.orderDetails = OrderData.orderList[(tableView.cellForRow(at: indexPath)?.accessibilityIdentifier)!]
+        print(OrderData.orderList["BCDD4FF3FD7B411690C684D6961B35BD"]?.items)
+        self.navigationController?.pushViewController(orderDetailsViewController!, animated: true)
     }
 }
 
@@ -55,6 +59,7 @@ extension OrderViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:OrderTableCustomCell =  tableView.dequeueReusableCell(withIdentifier: "tblOrderData") as! OrderTableCustomCell
+        cell.accessibilityIdentifier=Array(OrderData.orderList)[indexPath.row].value.orderId
         cell.lblOrderId.text = Array(OrderData.orderList)[indexPath.row].value.orderId
         cell.lblOrderStatus.text = self.getStatusName(status: Array(OrderData.orderList)[indexPath.row].value.status)
         return cell
